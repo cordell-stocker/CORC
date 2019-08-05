@@ -1,5 +1,6 @@
 package structure;
 
+@SuppressWarnings("unused")
 public interface CardProperty<P extends CardProperty> extends Comparable<P> {
 
     /**
