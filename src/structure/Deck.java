@@ -1,5 +1,7 @@
 package structure;
 
+import exception.MissingDeckException;
+
 /**
  * A collection of cards used for a card game.
  *
@@ -21,9 +23,15 @@ public abstract class Deck<C extends Card> implements Cardset<C> {
 
     /**
      *
+     * Throws an {@link exception.MissingDeckException} if
+     * no deck has been set.
+     *
      * @return The single stored Deck used across a game.
      */
     public static Deck getDeck() {
+        if (Deck.deck == null) {
+            throw new MissingDeckException();
+        }
         return Deck.deck;
     }
 
@@ -36,9 +44,21 @@ public abstract class Deck<C extends Card> implements Cardset<C> {
     }
 
     /**
+     * Should throw an {@link exception.EmptyDeckException} if
+     * there are no Cards in this.
      *
      * @return The next Card object stored in this.
      */
     public abstract C drawCard();
+
+    /**
+     * Should contain all logic necessary for
+     * clearing any contained cards, and filling
+     * itself with all new cards required to play
+     * a card game.
+     *
+     * Should be called in the constructor of the subclass.
+     */
+    public abstract void reset();
 
 }
