@@ -2,13 +2,14 @@ package observablestandard;
 
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import standard.StandardCard;
 import structure.Binder;
 import structure.Cardset;
 
 import java.util.*;
 
-public class ObservableCardset implements Cardset<StandardCard> {
+public class ObservableCardset implements Cardset<StandardCard>, Observable<StandardCard> {
 
     private final SimpleListProperty<StandardCard> CARDS;
 
@@ -130,14 +131,17 @@ public class ObservableCardset implements Cardset<StandardCard> {
     public <T> T[] toArray(T[] a) {
         return this.CARDS.toArray(a);
     }
+
     @Override
     public boolean containsAll(Collection<?> c) {
         return this.CARDS.containsAll(c);
     }
+
     @Override
     public void clear() {
         this.CARDS.clear();
     }
+
     @Override
     public int indexOf(Object o) {
         return this.CARDS.indexOf(o);
@@ -161,5 +165,15 @@ public class ObservableCardset implements Cardset<StandardCard> {
     @Override
     public List<StandardCard> subList(int fromIndex, int toIndex) {
         return this.CARDS.subList(fromIndex, toIndex);
+    }
+
+    @Override
+    public void addListener(ListChangeListener<StandardCard> listener) {
+        this.CARDS.addListener(listener);
+    }
+
+    @Override
+    public void removeListener(ListChangeListener<StandardCard> listener) {
+        this.CARDS.removeListener(listener);
     }
 }

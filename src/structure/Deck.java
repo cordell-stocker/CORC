@@ -17,9 +17,7 @@ import exception.MissingDeckException;
  * @param <C> The subclass of Card to be stored.
  */
 @SuppressWarnings("unused")
-public abstract class Deck<C extends Card> implements Cardset<C> {
-
-    private static Deck deck;
+public interface Deck<C extends Card> extends Cardset<C> {
 
     /**
      *
@@ -28,19 +26,19 @@ public abstract class Deck<C extends Card> implements Cardset<C> {
      *
      * @return The single stored Deck used across a game.
      */
-    public static Deck getDeck() {
-        if (Deck.deck == null) {
+    static Deck getDeck() {
+        if (DeckContainer.getDeck() == null) {
             throw new MissingDeckException();
         }
-        return Deck.deck;
+        return DeckContainer.getDeck();
     }
 
     /**
      *
      * @param deck The Deck to be used across a game.
      */
-    public static void setDeck(Deck deck) {
-        Deck.deck = deck;
+    static void setDeck(Deck deck) {
+        DeckContainer.setDeck(deck);
     }
 
     /**
@@ -49,7 +47,7 @@ public abstract class Deck<C extends Card> implements Cardset<C> {
      *
      * @return The next Card object stored in this.
      */
-    public abstract C drawCard();
+    C drawCard();
 
     /**
      * Should contain all logic necessary for
@@ -59,6 +57,6 @@ public abstract class Deck<C extends Card> implements Cardset<C> {
      *
      * Should be called in the constructor of the subclass.
      */
-    public abstract void reset();
+    void reset();
 
 }
