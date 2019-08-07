@@ -1,13 +1,22 @@
-package standard;
+package observablestandard;
 
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import standard.StandardCard;
+import standard.StandardFace;
+import standard.StandardSuit;
 import structure.Binder;
-import structure.Cardset;
+import structure.Deck;
 
 import java.util.*;
 
-public class StandardCardset implements Cardset<StandardCard> {
+public class ObservableDeck extends Deck<StandardCard> {
 
-    private final ArrayList<StandardCard> CARDS = new ArrayList<>();
+    private final SimpleListProperty<StandardCard> CARDS;
+
+    public ObservableDeck() {
+        this.CARDS = new SimpleListProperty<>(FXCollections.observableArrayList());
+    }
 
     @Override
     public boolean addCard(StandardCard card) {
@@ -154,5 +163,20 @@ public class StandardCardset implements Cardset<StandardCard> {
     @Override
     public List<StandardCard> subList(int fromIndex, int toIndex) {
         return this.CARDS.subList(fromIndex, toIndex);
+    }
+
+    @Override
+    public StandardCard drawCard() {
+        return this.removeCard(this.CARDS.size() - 1);
+    }
+
+    @Override
+    public void reset() {
+        this.clear();
+        for (StandardSuit suit : StandardSuit.values()) {
+            for (StandardFace face : StandardFace.values()) {
+                this.addCard(new StandardCard(face, suit));
+            }
+        }
     }
 }

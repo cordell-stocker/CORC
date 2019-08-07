@@ -1,13 +1,20 @@
-package standard;
+package observablestandard;
 
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import standard.StandardCard;
 import structure.Binder;
 import structure.Cardset;
 
 import java.util.*;
 
-public class StandardCardset implements Cardset<StandardCard> {
+public class ObservableCardset implements Cardset<StandardCard> {
 
-    private final ArrayList<StandardCard> CARDS = new ArrayList<>();
+    private final SimpleListProperty<StandardCard> CARDS;
+
+    public ObservableCardset() {
+        this.CARDS = new SimpleListProperty<>(FXCollections.observableArrayList());
+    }
 
     @Override
     public boolean addCard(StandardCard card) {

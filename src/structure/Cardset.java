@@ -102,6 +102,14 @@ public interface Cardset<C extends Card> extends Iterable<C>{
     C getCard(int index);
 
     /**
+     * Should return the cards stored in this, but not the direct
+     * reference to any internal variables.
+     *
+     * @return array of the stored cards.
+     */
+    C[] getCards();
+
+    /**
      * @see List#set(int, Object)
      *
      * @param index index of the element to replace

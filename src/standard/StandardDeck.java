@@ -1,13 +1,17 @@
 package standard;
 
 import structure.Binder;
-import structure.Cardset;
+import structure.Deck;
 
 import java.util.*;
 
-public class StandardCardset implements Cardset<StandardCard> {
+public class StandardDeck extends Deck<StandardCard> {
 
     private final ArrayList<StandardCard> CARDS = new ArrayList<>();
+
+    public StandardDeck() {
+        this.reset();
+    }
 
     @Override
     public boolean addCard(StandardCard card) {
@@ -154,5 +158,20 @@ public class StandardCardset implements Cardset<StandardCard> {
     @Override
     public List<StandardCard> subList(int fromIndex, int toIndex) {
         return this.CARDS.subList(fromIndex, toIndex);
+    }
+
+    @Override
+    public StandardCard drawCard() {
+        return this.removeCard(this.CARDS.size() - 1);
+    }
+
+    @Override
+    public void reset() {
+        this.clear();
+        for (StandardSuit suit : StandardSuit.values()) {
+            for (StandardFace face : StandardFace.values()) {
+                this.addCard(new StandardCard(face, suit));
+            }
+        }
     }
 }
