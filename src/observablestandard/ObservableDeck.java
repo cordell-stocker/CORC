@@ -1,8 +1,8 @@
 package observablestandard;
 
+import exception.EmptyDeckException;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import standard.StandardCard;
 import standard.StandardFace;
 import standard.StandardSuit;
@@ -19,6 +19,9 @@ public class ObservableDeck extends ObservableCardset implements Deck<StandardCa
 
     @Override
     public StandardCard drawCard() {
+        if (this.isEmpty()) {
+            throw new EmptyDeckException();
+        }
         return this.removeCard(this.CARDS.size() - 1);
     }
 
@@ -30,15 +33,5 @@ public class ObservableDeck extends ObservableCardset implements Deck<StandardCa
                 this.addCard(new StandardCard(face, suit));
             }
         }
-    }
-
-    @Override
-    public void addListener(ListChangeListener<StandardCard> listener) {
-        this.CARDS.addListener(listener);
-    }
-
-    @Override
-    public void removeListener(ListChangeListener<StandardCard> listener) {
-        this.CARDS.removeListener(listener);
     }
 }

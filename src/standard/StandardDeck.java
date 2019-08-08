@@ -1,5 +1,6 @@
 package standard;
 
+import exception.EmptyDeckException;
 import structure.Deck;
 
 import java.util.ArrayList;
@@ -14,6 +15,9 @@ public class StandardDeck extends StandardCardset implements Deck<StandardCard> 
 
     @Override
     public StandardCard drawCard() {
+        if (this.isEmpty()) {
+            throw new EmptyDeckException();
+        }
         return this.removeCard(this.CARDS.size() - 1);
     }
 

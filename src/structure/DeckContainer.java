@@ -1,6 +1,6 @@
 package structure;
 
-public class DeckContainer {
+public abstract class DeckContainer {
 
     private static Deck deck;
 
