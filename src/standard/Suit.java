@@ -1,11 +1,9 @@
 package standard;
 
-import structure.Suit;
-
 /**
  * Internal ordering is: HEARTS, SPADES, DIAMONDS, CLUBS.
  */
-public enum StandardSuit implements Suit<StandardSuit> {
+public enum Suit implements structure.Suit<Suit> {
     HEARTS, SPADES, DIAMONDS, CLUBS;
 
     /**

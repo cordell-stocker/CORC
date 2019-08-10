@@ -1,11 +1,9 @@
 package standard;
 
-import structure.Card;
+public class Card implements structure.Card<Card, Face, Suit> {
 
-public class StandardCard implements Card<StandardCard, StandardFace, StandardSuit> {
-
-    private final StandardFace FACE;
-    private final StandardSuit SUIT;
+    private final Face FACE;
+    private final Suit SUIT;
 
     /**
      * Shallow copy constructor.
@@ -16,31 +14,31 @@ public class StandardCard implements Card<StandardCard, StandardFace, StandardSu
      *
      * @param other card to make a copy of
      */
-    public StandardCard(StandardCard other) {
+    public Card(Card other) {
         this(other.FACE, other.SUIT);
     }
 
-    public StandardCard(StandardFace face, StandardSuit suit) {
+    public Card(Face face, Suit suit) {
         this.FACE = face;
         this.SUIT = suit;
     }
 
     /**
-     * @see Card#getFace()
+     * @see structure.Card#getFace()
      *
      * @return the Face representing this.
      */
     @Override
-    public StandardFace getFace() {
+    public Face getFace() {
         return this.FACE;
     }
 
     /**
-     * @see Card#getSuit()
+     * @see structure.Card#getSuit()
      * @return the Suit representing this.
      */
     @Override
-    public StandardSuit getSuit() {
+    public Suit getSuit() {
         return this.SUIT;
     }
 
@@ -51,8 +49,8 @@ public class StandardCard implements Card<StandardCard, StandardFace, StandardSu
      * @return positive if this comes before, negative for after, or 0 for equal ordering.
      */
     @Override
-    public int compareTo(StandardCard other) {
-        int possibleFaces = StandardFace.values().length;
+    public int compareTo(Card other) {
+        int possibleFaces = Face.values().length;
         int thisVal = this.FACE.getValue() + (this.SUIT.getValue() * possibleFaces);
         int otherVal = other.FACE.getValue() + (other.SUIT.getValue() * possibleFaces);
         return thisVal - otherVal;

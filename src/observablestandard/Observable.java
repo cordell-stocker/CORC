@@ -5,7 +5,7 @@ import structure.Card;
 
 public interface Observable<C extends Card> {
 
-    public void addListener(ListChangeListener<C> listener);
+    void addListener(ListChangeListener<C> listener);
 
-    public void removeListener(ListChangeListener<C> listener);
+    void removeListener(ListChangeListener<C> listener);
 }

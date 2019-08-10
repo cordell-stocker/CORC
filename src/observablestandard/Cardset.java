@@ -1,75 +1,82 @@
-package standard;
+package observablestandard;
 
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import standard.Card;
 import structure.Binder;
-import structure.Cardset;
 
 import java.util.*;
 
-public class StandardCardset implements Cardset<StandardCard> {
+public class Cardset implements structure.Cardset<Card>, Observable<Card> {
 
-    private final ArrayList<StandardCard> CARDS = new ArrayList<>();
+    private final SimpleListProperty<Card> CARDS;
+
+    public Cardset() {
+        this.CARDS = new SimpleListProperty<>(FXCollections.observableArrayList());
+    }
 
     @Override
-    public boolean addCard(StandardCard card) {
+    public boolean addCard(Card card) {
         return this.CARDS.add(card);
     }
 
     @Override
-    public void addCard(int index, StandardCard element) {
+    public void addCard(int index, Card element) {
         this.CARDS.add(index, element);
     }
 
     @Override
-    public boolean addCards(StandardCard[] cards) {
-        Collection<StandardCard> asList = Arrays.asList(cards);
+    public boolean addCards(Card[] cards) {
+        Collection<Card> asList = Arrays.asList(cards);
         return this.CARDS.addAll(asList);
     }
 
     @Override
-    public boolean addCards(Collection<StandardCard> cards) {
+    public boolean addCards(Collection<Card> cards) {
         return this.CARDS.addAll(cards);
     }
 
     @Override
-    public boolean addCards(int index, Collection<? extends StandardCard> cards) {
+    public boolean addCards(int index, Collection<? extends Card> cards) {
         return this.CARDS.addAll(index, cards);
     }
 
     @Override
-    public boolean removeCard(StandardCard card) {
+    public boolean removeCard(Card card) {
         return this.CARDS.remove(card);
     }
 
     @Override
-    public StandardCard removeCard(int index) {
+    public Card removeCard(int index) {
         return this.CARDS.remove(index);
     }
 
     @Override
-    public boolean removeCards(StandardCard[] cards) {
-        Collection<StandardCard> asList = Arrays.asList(cards);
+    public boolean removeCards(Card[] cards) {
+        Collection<Card> asList = Arrays.asList(cards);
         return this.CARDS.removeAll(asList);
     }
 
     @Override
-    public boolean removeCards(Collection<StandardCard> cards) {
+    public boolean removeCards(Collection<Card> cards) {
         return this.CARDS.removeAll(cards);
     }
 
     @Override
-    public StandardCard getCard(int index) {
+    public Card getCard(int index) {
         return this.CARDS.get(index);
     }
 
     @Override
-    public StandardCard[] getCards() {
-        StandardCard[] arr = new StandardCard[this.CARDS.size()];
+    public Card[] getCards() {
+        Card[] arr = new Card[this.CARDS.size()];
         arr = this.CARDS.toArray(arr);
         return arr;
     }
 
     @Override
-    public StandardCard setCard(int index, StandardCard element) {
+    public Card setCard(int index, Card element) {
         return this.CARDS.set(index, element);
     }
 
@@ -89,7 +96,7 @@ public class StandardCardset implements Cardset<StandardCard> {
     }
 
     @Override
-    public void bind(StandardCard[] cards) {
+    public void bind(Card[] cards) {
         Thread thread = Binder.makeBinder(cards, this);
         thread.start();
     }
@@ -110,7 +117,7 @@ public class StandardCardset implements Cardset<StandardCard> {
     }
 
     @Override
-    public Iterator<StandardCard> iterator() {
+    public Iterator<Card> iterator() {
         return this.CARDS.iterator();
     }
 
@@ -123,14 +130,17 @@ public class StandardCardset implements Cardset<StandardCard> {
     public <T> T[] toArray(T[] a) {
         return this.CARDS.toArray(a);
     }
+
     @Override
     public boolean containsAll(Collection<?> c) {
         return this.CARDS.containsAll(c);
     }
+
     @Override
     public void clear() {
         this.CARDS.clear();
     }
+
     @Override
     public int indexOf(Object o) {
         return this.CARDS.indexOf(o);
@@ -142,17 +152,27 @@ public class StandardCardset implements Cardset<StandardCard> {
     }
 
     @Override
-    public ListIterator<StandardCard> listIterator() {
+    public ListIterator<Card> listIterator() {
         return this.CARDS.listIterator();
     }
 
     @Override
-    public ListIterator<StandardCard> listIterator(int index) {
+    public ListIterator<Card> listIterator(int index) {
         return this.CARDS.listIterator(index);
     }
 
     @Override
-    public List<StandardCard> subList(int fromIndex, int toIndex) {
+    public List<Card> subList(int fromIndex, int toIndex) {
         return this.CARDS.subList(fromIndex, toIndex);
+    }
+
+    @Override
+    public void addListener(ListChangeListener<Card> listener) {
+        this.CARDS.addListener(listener);
+    }
+
+    @Override
+    public void removeListener(ListChangeListener<Card> listener) {
+        this.CARDS.removeListener(listener);
     }
 }
