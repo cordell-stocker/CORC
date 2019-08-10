@@ -1,16 +1,19 @@
 package blackjackcore.model;
 
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.ListChangeListener;
 import observablestandard.Cardset;
-import standard.*;
+import observablestandard.Deck;
+import standard.Card;
 
-public abstract class BlackjackPlayer {
+public abstract class BlackjackPlayer<C extends BlackjackController> {
 
     private final SimpleIntegerProperty SCORE = new SimpleIntegerProperty(0);
     private final SimpleIntegerProperty TOKENS = new SimpleIntegerProperty(0);
     private final Cardset CARDSET = new Cardset();
 
-    public abstract void takeTurn(BlackjackController controller, Deck deck);
+    public abstract void takeTurn(C controller, Deck deck);
 
     public abstract void addCard(Card card);
 
@@ -29,6 +32,13 @@ public abstract class BlackjackPlayer {
      * @return the number of Cards in this player's hand.
      */
     public abstract int getCardCount();
+
+    /**
+     * For student to implement.
+     *
+     * @return the amount this player is bidding.
+     */
+    public abstract int bid(C controller);
 
     /**
      *
@@ -69,5 +79,29 @@ public abstract class BlackjackPlayer {
      */
     public void bindArray(Card[] cards) {
         this.CARDSET.bind(cards);
+    }
+
+    public void addScoreListener(ChangeListener<? super Number> listener) {
+        this.SCORE.addListener(listener);
+    }
+
+    public void removeScoreListener(ChangeListener<? super Number> listener) {
+        this.SCORE.removeListener(listener);
+    }
+
+    public void addTokenListener(ChangeListener<? super Number> listener) {
+        this.TOKENS.addListener(listener);
+    }
+
+    public void removeTokenListener(ChangeListener<? super Number> listener) {
+        this.TOKENS.removeListener(listener);
+    }
+
+    public void addCardsetListener(ListChangeListener<Card> listener) {
+        this.CARDSET.addListener(listener);
+    }
+
+    public void removeCardsetListener(ListChangeListener<Card> listener) {
+        this.CARDSET.removeListener(listener);
     }
 }

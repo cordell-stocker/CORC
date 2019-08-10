@@ -1,12 +1,15 @@
 package blackjack;
 
-import blackjackcore.model.BlackjackController;
 import blackjackcore.model.BlackjackPlayer;
-import standard.*;
+import observablestandard.Deck;
+import standard.Card;
 
-public class BlackjackComputerPlayer extends BlackjackPlayer {
+import java.util.Random;
+
+public class BlackjackComputerPlayer extends BlackjackPlayer< BlackjackController> {
 
     private final BlackjackHand hand;
+    private BlackjackComputerPlayer player = this;
 
     public BlackjackComputerPlayer() {
         this.hand = new BlackjackHand(this);
@@ -32,6 +35,28 @@ public class BlackjackComputerPlayer extends BlackjackPlayer {
                 playing = false;
             }
         }
+    }
+
+    /**
+     * For student to implement.
+     *
+     * @param controller the game controller.
+     * @return amount this player is bidding.
+     */
+    @Override
+    public int bid(BlackjackController controller) {
+        Random random = new Random();
+        int choice = random.nextInt(3);
+        int bid = 0;
+
+        switch (choice) {
+            case 0: bid = 1; break;
+            case 1: bid = 3; break;
+            default: bid = 5;
+        }
+        player.setTokens(player.getTokens() - bid);
+
+        return bid;
     }
 
     /**
@@ -87,5 +112,23 @@ public class BlackjackComputerPlayer extends BlackjackPlayer {
     @Override
     public void setScore(int value) {
         super.setScore(value);
+    }
+
+    /**
+     *
+     * @return this player's tokens.
+     */
+    @Override
+    public int getTokens() {
+        return super.getTokens();
+    }
+
+    /**
+     *
+     * @param value the new tokens for this player.
+     */
+    @Override
+    public void setTokens(int value) {
+        super.setTokens(value);
     }
 }

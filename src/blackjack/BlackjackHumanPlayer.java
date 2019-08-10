@@ -1,12 +1,13 @@
 package blackjack;
 
-import blackjackcore.model.BlackjackController;
 import blackjackcore.model.BlackjackPlayer;
-import standard.*;
+import observablestandard.Deck;
+import standard.Card;
 
-public class BlackjackHumanPlayer extends BlackjackPlayer {
+public class BlackjackHumanPlayer extends BlackjackPlayer<BlackjackController> {
 
     private final BlackjackHand hand;
+    private BlackjackHumanPlayer player = this;
 
     public BlackjackHumanPlayer() {
         this.hand = new BlackjackHand(this);
@@ -40,6 +41,13 @@ public class BlackjackHumanPlayer extends BlackjackPlayer {
                 playing = false;
             }
         }
+    }
+
+    @Override
+    public int bid(BlackjackController controller) {
+        int bid = controller.getBidClicked();
+        player.setTokens(player.getTokens() - bid);
+        return bid;
     }
 
     /**
