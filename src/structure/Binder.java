@@ -3,16 +3,13 @@ package structure;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Binder extends Thread {
+public abstract class Binder extends Thread {
 
     private static long cycle = 100;
 
+    @SuppressWarnings("unused")
     public static void setCycle(long cycle) {
         Binder.cycle = cycle;
-    }
-
-    private Binder() {
-
     }
 
     /**
@@ -24,7 +21,6 @@ public class Binder extends Thread {
      * @param <T> subclass of Cardset.
      * @return a thread that once started will ensure only elements in the array appear in the list.
      */
-    @SuppressWarnings("Duplicates")
     public static <C extends Card, T extends Cardset<C>> Thread makeBinder(C[] cards, T cardset) {
         Thread thread = new Thread(() -> {
             ArrayList<C> boundAsList;

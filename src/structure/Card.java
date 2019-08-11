@@ -5,11 +5,10 @@ package structure;
  *
  * The representation of a card for a card game.
  *
- * @param <C> The class interfacing this.
+ * @param <C> The class interfacing this. Used for the Comparable interface.
  * @param <F> The Face subclass used to represent the face for this card.
  * @param <S> The Suit subclass used to represent the suit for this card.
  */
-@SuppressWarnings("unused")
 public interface Card<C extends Card, F extends Face, S extends Suit> extends Comparable<C> {
 
     /**
