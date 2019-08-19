@@ -21,6 +21,7 @@ public interface Face<F extends Face> extends CardProperty<F> {
      *
      * @return The word representation of this Face.
      */
+    @Override
     String getName();
 
     /**
@@ -32,10 +33,8 @@ public interface Face<F extends Face> extends CardProperty<F> {
      * 'Five' is the face value. While the 'Six
      * of Spades' would return a different value.
      *
-     * The main purpose of this method is to be
-     * used in the Comparable interface method(s).
-     *
      * @return The integer value of this Face.
      */
+    @Override
     int getValue();
 }

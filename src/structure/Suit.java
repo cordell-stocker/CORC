@@ -21,6 +21,7 @@ public interface Suit<S extends Suit> extends CardProperty<S> {
      *
      * @return The word representation of this Suit.
      */
+    @Override
     String getName();
 
     /**
@@ -32,10 +33,8 @@ public interface Suit<S extends Suit> extends CardProperty<S> {
      * 'Spades' is the suit value. While the 'Six
      * of Spades' would return a different value.
      *
-     * The main purpose of this method is to be
-     * used in the Comparable interface method(s).
-     *
      * @return The integer value of this Suit.
      */
+    @Override
     int getValue();
 }

@@ -1,13 +1,14 @@
 package structure;
 
 /**
- * Any attribute of a {@link Card} object should be a subclass of this type.
- * This allows for consistency when attempting to read an attribute of the
- * Card.
+ * Any attribute of a {@link Card} object should be a subclass of this.
+ * This interface allows for consistency when attempting to read an attribute
+ * of a Card.
  * <p>
  * No two fundamentally different instances of a CardProperty should return the
  * same results for both {@link #getName()} and {@link #getValue()}. At least one
  * of those methods should return a different value.
+ * <p>
  * In Mahjong, all cards (tiles) in the "Dots" sub-category would likely all return
  * "Dots" from getName(). However, there are nine different possible amounts of dots
  * on each card. This example does not break the given rule.

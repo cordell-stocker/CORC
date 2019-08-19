@@ -4,7 +4,7 @@ import standard.Card;
 
 public class CardImageView extends javafx.structure.CardImageView<Card> {
 
-    private static final String RES_PATH = "resources/standard";
+    private static final String RES_PATH = "resources/standard/";
     private static final String IMG_EXT = ".png";
     private static final String BACK_URL = CardImageView.RES_PATH + "back_blue_vertical" + CardImageView.IMG_EXT;
 

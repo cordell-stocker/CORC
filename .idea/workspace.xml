@@ -2,71 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0277d10d-7b48-4204-bab7-b824ffad906b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blackjackcore/view/BlackjackGUIController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/javafx/standard/CardImageView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/javafx/structure/CardImageView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/ace_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/ace_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/ace_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/ace_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/back_blue_horizontal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/back_blue_vertical.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/back_red_horizontal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/back_red_vertical.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/eight_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/eight_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/eight_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/eight_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/five_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/five_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/five_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/five_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/four_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/four_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/four_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/four_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/jack_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/jack_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/jack_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/jack_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/joker_black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/joker_red.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/king_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/king_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/king_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/king_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/nine_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/nine_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/nine_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/nine_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/queen_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/queen_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/queen_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/queen_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/seven_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/seven_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/seven_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/seven_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/six_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/six_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/six_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/six_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/ten_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/ten_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/ten_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/ten_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/three_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/three_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/three_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/three_spades.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/two_clubs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/two_diamonds.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/two_hearts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/standard/two_spades.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structure/Binder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structure/Binder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/structure/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structure/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javafx/standard/CardImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/javafx/standard/CardImageView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/structure/CardProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structure/CardProperty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structure/Face.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structure/Face.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structure/Suit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/structure/Suit.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,7 +22,7 @@
         <entry file="file://$PROJECT_DIR$/src/structure/Binder.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="128">
-              <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+              <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,17 +33,20 @@
       <file leaf-file-name="Card.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/structure/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="7" column="76" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
+            <state relative-caret-position="288">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CardProperty.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/structure/CardProperty.java">
+      <file leaf-file-name="CardImageView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/javafx/standard/CardImageView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="20" column="61" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
+            <state relative-caret-position="160">
+              <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+              <folding>
+                <element signature="e#422#423#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,8 +74,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/structure/Suit.java" />
-        <option value="$PROJECT_DIR$/src/structure/Face.java" />
         <option value="$PROJECT_DIR$/src/exception/EmptyDeckException.java" />
         <option value="$PROJECT_DIR$/src/exception/MissingDeckException.java" />
         <option value="$PROJECT_DIR$/src/structure/Cardset.java" />
@@ -168,10 +109,12 @@
         <option value="$PROJECT_DIR$/src/blackjack/BlackjackController.java" />
         <option value="$PROJECT_DIR$/src/blackjackcore/view/BlackjackGUIController.java" />
         <option value="$PROJECT_DIR$/src/javafx/structure/CardImageView.java" />
-        <option value="$PROJECT_DIR$/src/javafx/standard/CardImageView.java" />
         <option value="$PROJECT_DIR$/src/structure/Binder.java" />
         <option value="$PROJECT_DIR$/src/structure/Card.java" />
         <option value="$PROJECT_DIR$/src/structure/CardProperty.java" />
+        <option value="$PROJECT_DIR$/src/structure/Face.java" />
+        <option value="$PROJECT_DIR$/src/structure/Suit.java" />
+        <option value="$PROJECT_DIR$/src/javafx/standard/CardImageView.java" />
       </list>
     </option>
   </component>
@@ -196,8 +139,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -254,6 +195,13 @@
               <item name="CORC_V4" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="javafx" type="462c0819:PsiDirectoryNode" />
+              <item name="standard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CORC_V4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CORC_V4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="javafx" type="462c0819:PsiDirectoryNode" />
               <item name="structure" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -272,6 +220,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -355,12 +305,13 @@
       <updated>1564963714275</updated>
       <workItem from="1564963718772" duration="33472000" />
       <workItem from="1565447864540" duration="8090000" />
-      <workItem from="1565479262187" duration="10144000" />
+      <workItem from="1565479262187" duration="10445000" />
+      <workItem from="1565653459003" duration="2761000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51706000" />
+    <option name="totallyTimeSpent" value="54768000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -379,7 +330,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25799572" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -398,14 +349,15 @@
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="bottom" id="Run" order="6" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.25" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Run" order="6" />
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
@@ -416,12 +368,11 @@
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info id="Favorites" order="4" side_tool="true" />
       <window_info id="Capture Tool" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info id="Favorites" order="4" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,21 +387,17 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/structure/CardProperty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="21" column="6" lean-forward="true" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/blackjackcore/model/BlackjackPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding>
-            <element signature="docComment;method#clearCards#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#getCardCount#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#getScore#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#setScore#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#getTokens#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#setTokens#0;class#BlackjackPlayer#0" />
-            <element signature="e#1707#1708#0" expanded="true" />
-            <element signature="e#1745#1746#0" expanded="true" />
-            <element signature="docComment;method#bindArray#0;class#BlackjackPlayer#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -485,20 +432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding>
-            <element signature="e#322#323#0" expanded="true" />
-            <element signature="e#373#374#0" expanded="true" />
-            <element signature="docComment;method#takeTurn#0;class#BlackjackHumanPlayer#0" />
-            <element signature="method#takeTurn#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#addCard#0;class#BlackjackHumanPlayer#0" />
-            <element signature="method#addCard#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#clearCards#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#getCardCount#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#getScore#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#setScore#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#getTokens#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#setTokens#0;class#BlackjackHumanPlayer#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -506,18 +439,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding>
-            <element signature="docComment;method#takeTurn#0;class#BlackjackComputerPlayer#0" />
-            <element signature="method#takeTurn#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#addCard#0;class#BlackjackComputerPlayer#0" />
-            <element signature="method#addCard#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#clearCards#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#getCardCount#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#getScore#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#setScore#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#getTokens#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#setTokens#0;class#BlackjackComputerPlayer#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -525,9 +446,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1472">
           <caret line="93" column="61" selection-start-line="93" selection-start-column="61" selection-end-line="93" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -535,17 +453,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="docComment;method#clearCards#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#getCardCount#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#getScore#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#setScore#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#getTokens#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#setTokens#0;class#BlackjackPlayer#0" />
-            <element signature="e#1707#1708#0" expanded="true" />
-            <element signature="e#1745#1746#0" expanded="true" />
-            <element signature="docComment;method#bindArray#0;class#BlackjackPlayer#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -553,20 +460,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
-          <folding>
-            <element signature="e#322#323#0" expanded="true" />
-            <element signature="e#373#374#0" expanded="true" />
-            <element signature="docComment;method#takeTurn#0;class#BlackjackHumanPlayer#0" />
-            <element signature="method#takeTurn#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#addCard#0;class#BlackjackHumanPlayer#0" />
-            <element signature="method#addCard#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#clearCards#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#getCardCount#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#getScore#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#setScore#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#getTokens#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#setTokens#0;class#BlackjackHumanPlayer#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -574,18 +467,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="752">
           <caret line="90" column="1" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
-          <folding>
-            <element signature="docComment;method#takeTurn#0;class#BlackjackComputerPlayer#0" />
-            <element signature="method#takeTurn#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#addCard#0;class#BlackjackComputerPlayer#0" />
-            <element signature="method#addCard#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#clearCards#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#getCardCount#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#getScore#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#setScore#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#getTokens#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#setTokens#0;class#BlackjackComputerPlayer#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -606,20 +487,6 @@
             <element signature="method#getCardValue#0;class#BlackjackHand#0" />
             <element signature="docComment;method#getCards#0;class#BlackjackHand#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/structure/Face.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/structure/Suit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -706,20 +573,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/blackjack/gsgh.java" />
-    <entry file="file://$PROJECT_DIR$/src/standard/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/standard/Face.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/standard/Suit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -775,18 +628,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding>
-            <element signature="docComment;method#takeTurn#0;class#BlackjackComputerPlayer#0" />
-            <element signature="method#takeTurn#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#addCard#0;class#BlackjackComputerPlayer#0" />
-            <element signature="method#addCard#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#clearCards#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#getCardCount#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#getScore#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#setScore#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#getTokens#0;class#BlackjackComputerPlayer#0" />
-            <element signature="docComment;method#setTokens#0;class#BlackjackComputerPlayer#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -794,9 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1072">
           <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -804,17 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-90">
           <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding>
-            <element signature="docComment;method#clearCards#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#getCardCount#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#getScore#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#setScore#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#getTokens#0;class#BlackjackPlayer#0" />
-            <element signature="docComment;method#setTokens#0;class#BlackjackPlayer#0" />
-            <element signature="e#1707#1708#0" expanded="true" />
-            <element signature="e#1745#1746#0" expanded="true" />
-            <element signature="docComment;method#bindArray#0;class#BlackjackPlayer#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -822,20 +649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding>
-            <element signature="e#322#323#0" expanded="true" />
-            <element signature="e#373#374#0" expanded="true" />
-            <element signature="docComment;method#takeTurn#0;class#BlackjackHumanPlayer#0" />
-            <element signature="method#takeTurn#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#addCard#0;class#BlackjackHumanPlayer#0" />
-            <element signature="method#addCard#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#clearCards#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#getCardCount#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#getScore#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#setScore#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#getTokens#0;class#BlackjackHumanPlayer#0" />
-            <element signature="docComment;method#setTokens#0;class#BlackjackHumanPlayer#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -863,19 +676,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/javafx/empty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafx/empty.java" />
     <entry file="file://$PROJECT_DIR$/src/javafx/structure/CardImageView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -894,49 +698,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/AAAEmpty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/javafx/standard/CardImageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding>
-            <element signature="e#390#391#0" expanded="true" />
-            <element signature="e#424#425#0" expanded="true" />
-            <element signature="e#480#481#0" expanded="true" />
-            <element signature="e#516#517#0" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/AAAEmpty.java" />
     <entry file="file://$PROJECT_DIR$/src/structure/Binder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
-          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/structure/Card.java">
+    <entry file="file://$PROJECT_DIR$/src/structure/CardProperty.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="76" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
+        <state relative-caret-position="368">
+          <caret line="23" column="75" lean-forward="true" selection-start-line="23" selection-start-column="75" selection-end-line="23" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/structure/CardProperty.java">
+    <entry file="file://$PROJECT_DIR$/src/standard/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="20" column="61" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
+        <state relative-caret-position="96">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/standard/Face.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structure/Suit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structure/Face.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structure/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafx/standard/CardImageView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+          <folding>
+            <element signature="e#422#423#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
