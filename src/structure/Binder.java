@@ -49,12 +49,6 @@ public abstract class Binder extends Thread {
                     }
                 }
                 cardset.removeCards(removeCards);
-
-                try {
-                    Thread.sleep(Binder.cycle);
-                } catch (InterruptedException ex) {
-                    break;
-                }
             }
         });
         thread.setDaemon(true);
