@@ -1,12 +1,18 @@
 package javafx.standard;
 
 import standard.Card;
+import standard.Face;
+import standard.Suit;
 
 public class CardImageView extends javafx.structure.CardImageView<Card> {
 
     private static final String RES_PATH = "resources/standard/";
     private static final String IMG_EXT = ".png";
     private static final String BACK_URL = CardImageView.RES_PATH + "back_blue_vertical" + CardImageView.IMG_EXT;
+
+    public CardImageView() {
+        super(new Card(Face.ACE, Suit.SPADES), CardImageView.BACK_URL, CardImageView.BACK_URL, true);
+    }
 
     public CardImageView(Card card) {
         this(card, true);
