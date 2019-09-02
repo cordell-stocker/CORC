@@ -1,4 +1,5 @@
 #Card Objects Rendered Correctly \(CORC\)
+##Version: 0.1.0
 ##Notes
 ###Naming Convention
 
