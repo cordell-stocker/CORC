@@ -14,15 +14,15 @@ public abstract class GUIController extends Application {
     private static List<Object> waitingOn = new ArrayList<>();
     private static long SLEEP_TIME = 100;
 
-    public void addObjectToWaitOn(Object o) {
+    public static void addObjectToWaitOn(Object o) {
         GUIController.waitingOn.add(o);
     }
 
-    public void removeObjectToWaitOn(Object o) {
+    public static void removeObjectToWaitOn(Object o) {
         GUIController.waitingOn.remove(o);
     }
 
-    public void waitOnGUI() {
+    public static void waitOnGUI() {
         if (!GUIController.waitingOn.isEmpty()) {
             do {
                 try {
