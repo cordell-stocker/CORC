@@ -4,6 +4,7 @@ import standard.Card;
 import standard.Face;
 import standard.Suit;
 
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class CardImageView extends javafx.structure.CardImageView<Card> {
 
     private static final String RES_PATH = "resources/standard/";

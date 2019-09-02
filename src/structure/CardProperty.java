@@ -1,9 +1,11 @@
 package structure;
 
 /**
- * Any attribute of a {@link Card} object should be a subclass of this.
+ * Any attribute of a {@link ICard} object should be a subclass of this.
  * This interface allows for consistency when attempting to read an attribute
  * of a Card.
+ * <p>
+ * A CardProperty SHOULD be immutable.
  * <p>
  * No two fundamentally different instances of a CardProperty should return the
  * same results for both {@link #getName()} and {@link #getValue()}. At least one

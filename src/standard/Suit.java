@@ -1,14 +1,16 @@
 package standard;
 
+import structure.ISuit;
+
 /**
  * Internal ordering is: HEARTS, SPADES, DIAMONDS, CLUBS.
  */
-public enum Suit implements structure.Suit<Suit> {
+public enum Suit implements ISuit<Suit> {
     HEARTS, SPADES, DIAMONDS, CLUBS;
 
     /**
      * Returns the string in all uppercase.
-     *
+     * <p>
      * Examples: "HEARTS" and "SPADES"
      *
      * @return string representation of this.

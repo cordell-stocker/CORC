@@ -5,6 +5,7 @@ import standard.Card;
 import standard.Face;
 import standard.Suit;
 
+@SuppressWarnings("unused")
 public class Deck extends Cardset implements structure.Deck<Card>, Observable<Card> {
 
     public Deck() {

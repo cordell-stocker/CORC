@@ -4,10 +4,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+@SuppressWarnings("unused")
 public abstract class OptionPanel<T> extends VBox {
 
+    @SuppressWarnings("FieldCanBeLocal")
     private final long SLEEP_TIME = 100;
-    private boolean clicked;
+    private volatile boolean clicked;
     private T optionClicked;
 
     public OptionPanel(String title, T[] options) {

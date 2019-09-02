@@ -2,9 +2,9 @@ package javafx.structure;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import structure.Card;
+import structure.ICard;
 
-public abstract class CardImageView<C extends Card> extends ImageView implements Comparable<CardImageView<C>> {
+public abstract class CardImageView<C extends ICard> extends ImageView implements Comparable<CardImageView<C>> {
 
     private final String FRONT_URL, BACK_URL;
     private final C CARD;

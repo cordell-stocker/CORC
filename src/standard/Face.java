@@ -1,14 +1,16 @@
 package standard;
 
+import structure.IFace;
+
 /**
  * Internal ordering is: ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING.
  */
-public enum Face implements structure.Face<Face> {
+public enum Face implements IFace<Face> {
     ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
 
     /**
      * Returns the string in all uppercase.
-     *
+     * <p>
      * Examples: "ACE", "THREE", "JACK"
      *
      * @return string representation of this.

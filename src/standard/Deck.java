@@ -2,11 +2,8 @@ package standard;
 
 import exception.EmptyDeckException;
 
-import java.util.ArrayList;
-
+@SuppressWarnings("unused")
 public class Deck extends Cardset implements structure.Deck<Card> {
-
-    private final ArrayList<Card> CARDS = new ArrayList<>();
 
     public Deck() {
         this.reset();
@@ -17,7 +14,7 @@ public class Deck extends Cardset implements structure.Deck<Card> {
         if (this.isEmpty()) {
             throw new EmptyDeckException();
         }
-        return this.removeCard(this.CARDS.size() - 1);
+        return this.removeCard(this.size() - 1);
     }
 
     @Override

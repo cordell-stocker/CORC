@@ -1,5 +1,6 @@
 package exception;
 
+@SuppressWarnings("unused")
 public class InvalidCardTypeException extends RuntimeException {
 
     public InvalidCardTypeException() {

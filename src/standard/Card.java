@@ -1,18 +1,21 @@
 package standard;
 
-public class Card implements structure.Card<Card, Face, Suit> {
+import structure.CardProperty;
+import structure.ICard;
+
+public class Card implements ICard<Card> {
 
     private final Face FACE;
     private final Suit SUIT;
 
     /**
      * Shallow copy constructor.
-     *
+     * <p>
      * Since StandardFace and StandardSuit are enums,
      * setting this's Face and Suit to the other's
      * can not affect the other Card.
      *
-     * @param other card to make a copy of
+     * @param other card to make a copy of.
      */
     public Card(Card other) {
         this(other.FACE, other.SUIT);
@@ -24,29 +27,23 @@ public class Card implements structure.Card<Card, Face, Suit> {
     }
 
     /**
-     * @see structure.Card#getFace()
-     *
      * @return the Face representing this.
      */
-    @Override
     public Face getFace() {
         return this.FACE;
     }
 
     /**
-     * @see structure.Card#getSuit()
      * @return the Suit representing this.
      */
-    @Override
     public Suit getSuit() {
         return this.SUIT;
     }
 
     /**
-     * @see Comparable#compareTo(Object)
-     *
      * @param other the other card to compare to.
      * @return positive if this comes before, negative for after, or 0 for equal ordering.
+     * @see Comparable#compareTo(Object)
      */
     @Override
     public int compareTo(Card other) {
@@ -54,5 +51,15 @@ public class Card implements structure.Card<Card, Face, Suit> {
         int thisVal = this.FACE.getValue() + (this.SUIT.getValue() * possibleFaces);
         int otherVal = other.FACE.getValue() + (other.SUIT.getValue() * possibleFaces);
         return thisVal - otherVal;
+    }
+
+    @Override
+    public CardProperty[] getCardProperties() {
+        return new CardProperty[]{this.FACE, this.SUIT};
+    }
+
+    @Override
+    public String getDescription() {
+        return String.format("%s OF %s", this.FACE.getName(), this.SUIT.getName());
     }
 }

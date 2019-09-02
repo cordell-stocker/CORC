@@ -10,94 +10,78 @@ import java.util.ListIterator;
  *
  * @param <C> The subclass of Card to be stored
  */
-@SuppressWarnings("unused")
-public interface Cardset<C extends Card> extends Iterable<C>{
+@SuppressWarnings({"unused", "UnusedReturnValue"})
+public interface ICardset<C extends ICard> extends Iterable<C> {
 
     /**
-     * @see List#add(Object)
-     *
      * @param card Card to be added.
      * @return true (as specified by {@link Collection#add(Object)}.
+     * @see List#add(Object)
      */
     boolean addCard(C card);
 
     /**
-     * @see List#add(int, Object)
-     *
-     * @param index index at which the specified element is to be inserted
+     * @param index   index at which the specified element is to be inserted
      * @param element element to be inserted
+     * @see List#add(int, Object)
      */
     void addCard(int index, C element);
 
     /**
-     * Should perform the same operations as
-     * addCards(Collection).
-     *
-     * @see List#addAll(Collection)
-     *
      * @param cards Cards to be added.
      * @return true if this list changed as a result of the call.
+     * @see List#addAll(Collection)
      */
     boolean addCards(C[] cards);
 
     /**
-     * @see List#addAll(Collection)
-     *
      * @param cards Card to be added.
-     * @return true if this list changed as a result of the call
+     * @return true if this list changed as a result of the call.
+     * @see List#addAll(Collection)
      */
     boolean addCards(Collection<C> cards);
 
     /**
-     * @see List#addAll(int, Collection)
-     *
      * @param index index at which to insert the first element from the
-     *              specified collection
-     * @param c collection containing elements to be added to this list
-     * @return <tt>true</tt> if this list changed as a result of the call
+     *              specified collection.
+     * @param c     collection containing elements to be added to this list.
+     * @return <tt>true</tt> if this list changed as a result of the call.
+     * @see List#addAll(int, Collection)
      */
     boolean addCards(int index, Collection<? extends C> c);
 
     /**
-     * @see List#remove(Object)
-     *
      * @param card Card to be removed
      * @return true if this Cardset contained the specified Card.
+     * @see List#remove(Object)
      */
     boolean removeCard(C card);
 
     /**
-     * @see List#remove(int)
-     *
      * @param index the index of the Card to be removed
      * @return the Card previously contained at the specified position.
+     * @see List#remove(int)
      */
     C removeCard(int index);
 
     /**
-     * Should perform the same operations as
-     * removeCards(Collection).
-     *
-     * @see List#removeAll(Collection)
-     *
      * @param cards Card to be removed from this.
      * @return true if this Cardset changed as a result of the call.
+     * @see List#removeAll(Collection)
      */
     boolean removeCards(C[] cards);
 
     /**
-     * @see List#removeAll(Collection)
-     *
      * @param cards Cards to be removed from this.
      * @return true if this Cardset changed as a result of the call.
+     * @see List#removeAll(Collection)
      */
     boolean removeCards(Collection<C> cards);
 
     /**
-     * @see List#get(int)
-     *
      * @param index specified card to get.
      * @return the card at the specified location.
+     * @see List#get(int)
      */
     C getCard(int index);
 
@@ -110,36 +94,43 @@ public interface Cardset<C extends Card> extends Iterable<C>{
     C[] getCards();
 
     /**
-     * @see List#set(int, Object)
-     *
-     * @param index index of the element to replace
+     * @param index   index of the element to replace
      * @param element element to be stored at the specified position
      * @return the element previously at the specified position
+     * @see List#set(int, Object)
      */
     C setCard(int index, C element);
 
     /**
-     * @see List#retainAll(Collection)
-     *
      * @param c collection containing elements to be retained in this list
      * @return <tt>true</tt> if this list changed as a result of the call
+     * @see List#retainAll(Collection)
      */
     boolean retainCards(Collection<?> c);
 
     /**
-     * Should randomly shuffle this. Such that the Cards
+     * SHOULD randomly shuffle this. Such that the Cards
      * stored by this would not appear in the same order
-     * after the sort() method is called.
-     *
+     * as another Cardset after the sort() method is called
+     * on the other.
+     * Set logic: Cardset.shuffle() != Cardset.sort()
+     * <p>
+     * This method SHOULD NOT shuffle the same pattern on
+     * each call. (e.x. SHOULD NOT always swap index 1 and 17).
+     * While there can be a possibility that two Cardsets result
+     * in the same order after this method, the chance should be
+     * unlikely.
+     * Set logic: Cardset.shuffle() != Cardset.shuffle()
      */
     void shuffle();
 
     /**
      * Should sort this in a consistent manner.
-     *
+     * <p>
      * Any number of calls to this method on the same
      * Deck should produce the same ordering of Cards
      * stored internally.
+     * Set logic: Cardset.sort() == Cardset.sort()
      */
     void sort();
 
@@ -148,61 +139,55 @@ public interface Cardset<C extends Card> extends Iterable<C>{
      *
      * @param cards array to be bound.
      */
+    @Deprecated
     void bind(C[] cards);
 
     /**
-     * @see List#size()
-     *
      * @return the number of elements in this list
+     * @see List#size()
      */
     int size();
 
     /**
-     * @see List#isEmpty()
-     *
      * @return <tt>true</tt> if this list contains no elements
+     * @see List#isEmpty()
      */
     boolean isEmpty();
 
     /**
-     * @see List#contains(Object)
-     *
-     * @param o element whose presence in this list is to be tested
+     * @param o element whose presence in this list is to be tested.
      * @return <tt>true</tt> if this list contains the specified element
+     * @see List#contains(Object)
      */
     boolean contains(Object o);
 
     /**
-     * @see Iterable#iterator()
-     *
      * @return an Iterator.
+     * @see Iterable#iterator()
      */
     Iterator<C> iterator();
 
     /**
-     * @see List#toArray()
-     *
      * @return an array containing all of the elements in this list in proper
-     *         sequence
+     * sequence
+     * @see List#toArray()
      */
     Object[] toArray();
 
     /**
-     * @see List#toArray(Object[])
-     *
      * @param a the array into which the elements of this list are to
      *          be stored, if it is big enough; otherwise, a new array of the
      *          same runtime type is allocated for this purpose.
      * @return an array containing the elements of this list
+     * @see List#toArray(Object[])
      */
     <T> T[] toArray(T[] a);
 
     /**
-     * @see List#containsAll(Collection)
-     *
-     * @param  c collection to be checked for containment in this list
+     * @param c collection to be checked for containment in this list
      * @return <tt>true</tt> if this list contains all of the elements of the
-     *         specified collection
+     * specified collection
+     * @see List#containsAll(Collection)
      */
     boolean containsAll(Collection<?> c);
 
@@ -212,47 +197,42 @@ public interface Cardset<C extends Card> extends Iterable<C>{
     void clear();
 
     /**
-     * @see List#indexOf(Object)
-     *
      * @param o element to search for
      * @return the index of the first occurrence of the specified element in
-     *         this list, or -1 if this list does not contain the element
+     * this list, or -1 if this list does not contain the element
+     * @see List#indexOf(Object)
      */
     int indexOf(Object o);
 
     /**
-     * @see List#lastIndexOf(Object)
-     *
      * @param o element to search for
      * @return the index of the last occurrence of the specified element in
-     *         this list, or -1 if this list does not contain the element
+     * this list, or -1 if this list does not contain the element
+     * @see List#lastIndexOf(Object)
      */
     int lastIndexOf(Object o);
 
     /**
-     * @see List#listIterator()
-     *
      * @return a list iterator over the elements in this list (in proper
-     *         sequence)
+     * sequence)
+     * @see List#listIterator()
      */
     ListIterator<C> listIterator();
 
     /**
-     * @see List#listIterator(int)
-     *
      * @param index index of the first element to be returned from the
-     *        list iterator (by a call to {@link ListIterator#next next})
+     *              list iterator (by a call to {@link ListIterator#next next})
      * @return a list iterator over the elements in this list (in proper
-     *         sequence), starting at the specified position in the list
+     * sequence), starting at the specified position in the list
+     * @see List#listIterator(int)
      */
     ListIterator<C> listIterator(int index);
 
     /**
-     * @see List#subList(int, int)
-     *
      * @param fromIndex low endpoint (inclusive) of the subList
-     * @param toIndex high endpoint (exclusive) of the subList
+     * @param toIndex   high endpoint (exclusive) of the subList
      * @return a view of the specified range within this list
+     * @see List#subList(int, int)
      */
     List<C> subList(int fromIndex, int toIndex);
 }

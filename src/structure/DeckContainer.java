@@ -1,14 +1,20 @@
 package structure;
 
-public abstract class DeckContainer {
+/**
+ * Holds an instance of a {@link Deck} object.
+ *
+ * Main purpose is for the Deck interface static methods to be
+ * able to set a "global" Deck object.
+ */
+final class DeckContainer {
 
     private static Deck deck;
 
-    public static void setDeck(Deck deck) {
+    static void setDeck(Deck deck) {
         DeckContainer.deck = deck;
     }
 
-    public static Deck getDeck() {
+    static Deck getDeck() {
         return DeckContainer.deck;
     }
 }
