@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("UnusedReturnValue")
+@Deprecated
 public abstract class Binder extends Thread {
 
     /**
@@ -20,6 +21,7 @@ public abstract class Binder extends Thread {
      * @param <T>     subclass of Cardset.
      * @return a thread that is already started which will ensure only elements in the array appear in the list.
      */
+    @Deprecated
     public static <C extends ICard, T extends ICardset<C>> Thread bind(C[] cards, T cardset) {
         Thread thread = new Thread(() -> {
             List<C> boundAsList;
