@@ -1,4 +1,4 @@
-package javafxextend;
+package javafxextend.structure;
 
 import javafx.application.Application;
 import javafx.application.Platform;

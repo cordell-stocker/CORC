@@ -1,4 +1,4 @@
-package javafxextend;
+package javafxextend.structure;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

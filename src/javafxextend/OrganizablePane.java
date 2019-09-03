@@ -19,8 +19,8 @@ public class OrganizablePane extends Pane {
     private final double SELECTED_VERTICAL_SHIFT;
     private final double HORIZONTAL_SPACING;
 
+    private Node nodeBeingMoved;
     private Node selectedNode;
-    private Node prevSelectedNode;
     private double mouseX;
 
     private EventHandler<MouseEvent> mouseReleased;
@@ -48,9 +48,9 @@ public class OrganizablePane extends Pane {
                         node.setOnMouseClicked(null);
                         node.setOnMouseDragged(null);
                         node.setOnMouseReleased(null);
-                        if (node == this.prevSelectedNode) {
-                            prevSelectedNode.setTranslateY(0);
-                            prevSelectedNode = null;
+                        if (node == this.selectedNode) {
+                            selectedNode.setTranslateY(0);
+                            selectedNode = null;
                         }
                     }
                 }
@@ -67,15 +67,16 @@ public class OrganizablePane extends Pane {
     private void setMouseClicked() {
         this.mouseClicked = e -> {
             if (e.getButton() == MouseButton.PRIMARY && e.getSource() instanceof Node) {
-                mouseX = e.getSceneX();
-                selectedNode = (Node) e.getSource();
+                this.mouseX = e.getSceneX();
+                this.nodeBeingMoved = (Node) e.getSource();
 
-                if (this.prevSelectedNode != null) {
-                    prevSelectedNode.setTranslateY(0);
+                if (this.selectedNode != null) {
+                    this.selectedNode.setTranslateY(0);
                 }
 
-                prevSelectedNode = selectedNode;
-                prevSelectedNode.setTranslateY(this.SELECTED_VERTICAL_SHIFT);
+                this.selectedNode = nodeBeingMoved;
+                this.selectedNode.setTranslateY(this.SELECTED_VERTICAL_SHIFT);
+                this.selectedNode.setViewOrder(-1.0);
             }
         };
     }
@@ -84,17 +85,18 @@ public class OrganizablePane extends Pane {
         this.mouseDragged = e -> {
             if (e.getButton() == MouseButton.PRIMARY) {
                 double deltaX = e.getSceneX() - mouseX;
-                double currentX = selectedNode.getLayoutX();
-                selectedNode.setLayoutX(currentX + deltaX);
-                mouseX = e.getSceneX();
+                double currentX = nodeBeingMoved.getLayoutX();
+                this.nodeBeingMoved.setLayoutX(currentX + deltaX);
+                this.mouseX = e.getSceneX();
             }
         };
     }
 
     private void setMouseReleased() {
         this.mouseReleased = e -> {
-            selectedNode = null;
+            nodeBeingMoved = null;
             this.orderChildren();
+            this.selectedNode.setViewOrder(0.0);
         };
     }
 
@@ -139,7 +141,7 @@ public class OrganizablePane extends Pane {
         return HORIZONTAL_SPACING;
     }
 
-    public Node getPrevSelectedNode() {
-        return prevSelectedNode;
+    public Node getSelectedNode() {
+        return selectedNode;
     }
 }
