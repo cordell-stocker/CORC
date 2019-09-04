@@ -1,11 +1,12 @@
 package javafxextend.standard;
 
+import javafxextend.structure.AbstractCardImageView;
 import standard.Card;
 import standard.Face;
 import standard.Suit;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
-public class CardImageView extends javafxextend.structure.CardImageView<Card> {
+public class CardImageView extends AbstractCardImageView<Card> {
 
     private static final String RES_PATH = "resources/standard/";
     private static final String IMG_EXT = ".png";
@@ -23,7 +24,7 @@ public class CardImageView extends javafxextend.structure.CardImageView<Card> {
         super(card, CardImageView.getFrontUrlFromCard(card), CardImageView.BACK_URL, isFaceUp);
     }
 
-    public <I extends javafxextend.structure.CardImageView<Card>> CardImageView(I cardImageView) {
+    public <I extends AbstractCardImageView<Card>> CardImageView(I cardImageView) {
         super(cardImageView);
     }
 
@@ -33,7 +34,7 @@ public class CardImageView extends javafxextend.structure.CardImageView<Card> {
     }
 
     @Override
-    public int compareTo(javafxextend.structure.CardImageView<Card> o) {
+    public int compareTo(AbstractCardImageView<Card> o) {
         return this.getCard().compareTo(o.getCard());
     }
 }

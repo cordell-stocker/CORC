@@ -5,15 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafxextend.structure.CardImageView;
-import standard.Card;
 import structure.ICard;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
-public abstract class AbstractVisualHand<C extends ICard, CIV extends CardImageView<C>> extends BorderPane {
+public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCardImageView<C>> extends BorderPane {
 
     private final Pane HAND_PANE;
     private final List<CIV> CARD_IMAGE_VIEWS = new ArrayList<>();
