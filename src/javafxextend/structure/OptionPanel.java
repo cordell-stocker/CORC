@@ -1,5 +1,6 @@
 package javafxextend.structure;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -11,14 +12,22 @@ public abstract class OptionPanel<T> extends VBox {
     private final long SLEEP_TIME = 100;
     private volatile boolean clicked;
     private T optionClicked;
+    private final double MIN_BUTTON_WIDTH = 50;
 
     public OptionPanel(String title, T[] options) {
         OptionPanel<T> that = this; // Prevents confusion in lambdas.
-        Label header = new Label(title);
-        this.getChildren().add(header);
+
+        this.setAlignment(Pos.CENTER);
+
+        if (title.length() != 0) {
+            Label header = new Label(title);
+            header.setStyle("-fx-background-color: WHITE; -fx-border-color: GRAY; -fx-padding: 4px; -fx-font-size: 20px");
+            this.getChildren().add(header);
+        }
 
         for (T option : options) {
             Button button = new Button(option.toString());
+            button.setMinWidth(this.MIN_BUTTON_WIDTH);
             button.setOnAction(e -> {
                 that.optionClicked = option;
                 that.clicked = true;

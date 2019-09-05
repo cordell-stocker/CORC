@@ -16,15 +16,16 @@ public class VisualHand extends AbstractVisualHand<Card, CardImageView> {
 
     @Override
     protected void update(ListChangeListener.Change<? extends Card> c) {
+        List<CardImageView> toAdd = new ArrayList<>();
+        List<CardImageView> toRemove = new ArrayList<>();
         while (c.next()) {
             if (c.wasAdded()) {
                 for (Card card : c.getAddedSubList()) {
                     CardImageView cardImageView = new CardImageView(card);
-                    this.addCardImageView(cardImageView);
+                    toAdd.add(cardImageView);
                 }
             }
             if (c.wasRemoved()) {
-                List<CardImageView> toRemove = new ArrayList<>();
                 for (Card card : c.getRemoved()) {
                     for (CardImageView cardImageView : this.getSavedCardImageViews()) {
                         if (cardImageView.getCard() == card) {
@@ -33,10 +34,13 @@ public class VisualHand extends AbstractVisualHand<Card, CardImageView> {
                         }
                     }
                 }
-                for (CardImageView cardImageView : toRemove) {
-                    this.removeCardImageView(cardImageView);
-                }
             }
+        }
+        for (CardImageView cardImageView : toRemove) {
+            this.removeCardImageView(cardImageView);
+        }
+        for (CardImageView cardImageView : toAdd) {
+            this.addCardImageView(cardImageView);
         }
     }
 }

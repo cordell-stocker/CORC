@@ -1,5 +1,6 @@
 package javafxextend.structure;
 
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -15,7 +16,7 @@ public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCa
 
     private final Pane HAND_PANE;
     private final List<CIV> CARD_IMAGE_VIEWS = new ArrayList<>();
-    private ListChangeListener<C> listener = this::update;
+    private ListChangeListener<C> listener = c -> Platform.runLater(() -> this.update(c));
 
     public AbstractVisualHand(Pane handPane) {
         this.HAND_PANE = handPane;
@@ -35,13 +36,13 @@ public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCa
     }
 
     protected final void addToDisplayOnly(CIV cardImageView) {
-        ObservableList<Node> children = this.getChildren();
+        ObservableList<Node> children = this.HAND_PANE.getChildren();
         children.remove(cardImageView);
         children.add(cardImageView);
     }
 
     protected final void removeFromDisplayOnly(CIV cardImageView) {
-        this.getChildren().remove(cardImageView);
+        this.HAND_PANE.getChildren().remove(cardImageView);
     }
 
     protected final void addToSavedOnly(CIV cardImageView) {

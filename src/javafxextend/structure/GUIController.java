@@ -23,15 +23,14 @@ public abstract class GUIController extends Application {
     }
 
     public static void waitOnGUI() {
-        if (!GUIController.waitingOn.isEmpty()) {
-            do {
-                try {
-                    Thread.sleep(GUIController.SLEEP_TIME);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            } while (!GUIController.waitingOn.isEmpty());
-        }
+        do {
+            try {
+                Thread.sleep(GUIController.SLEEP_TIME);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } while (!GUIController.waitingOn.isEmpty());
+
     }
 
     protected void addNodeOnPlatformThread(Pane parent, Node child) {
