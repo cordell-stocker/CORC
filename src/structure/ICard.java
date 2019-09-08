@@ -5,7 +5,7 @@ package structure;
  * <p>
  * SHOULD be implemented as an immutable object.
  *
- * @param <C> The class interfacing this. Used for the Comparable interface.
+ * @param <C> the object implementing this. Used to reference the subclass for the Comparable interface.
  */
 @SuppressWarnings("unused")
 public interface ICard<C extends ICard> extends Comparable<C> {

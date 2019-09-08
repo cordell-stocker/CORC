@@ -1,15 +1,16 @@
-package observablestandard;
+package javafxextend.standard;
 
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import standard.Card;
 import structure.Binder;
+import structure.ICardset;
 
 import java.util.*;
 
 @SuppressWarnings("WeakerAccess")
-public class Cardset implements structure.ICardset<Card>, Observable<Card> {
+public class Cardset implements ICardset<Card>, ObservableList<Card> {
 
     private final SimpleListProperty<Card> CARDS;
 

@@ -1,10 +1,10 @@
-package observablestandard;
+package javafxextend.standard;
 
 import javafx.collections.ListChangeListener;
 import structure.ICard;
 
 @SuppressWarnings("unused")
-public interface Observable<C extends ICard> {
+public interface ObservableList<C extends ICard> {
 
     void addListener(ListChangeListener<C> listener);
 

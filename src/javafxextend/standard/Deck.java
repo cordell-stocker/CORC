@@ -1,4 +1,4 @@
-package observablestandard;
+package javafxextend.standard;
 
 import exception.EmptyDeckException;
 import standard.Card;
@@ -6,7 +6,7 @@ import standard.Face;
 import standard.Suit;
 
 @SuppressWarnings("unused")
-public class Deck extends Cardset implements structure.Deck<Card>, Observable<Card> {
+public class Deck extends Cardset implements structure.Deck<Card>, ObservableList<Card> {
 
     public Deck() {
         this.reset();

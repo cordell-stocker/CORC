@@ -45,7 +45,7 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
      * @param index index at which to insert the first element from the
      *              specified collection.
      * @param c     collection containing elements to be added to this list.
-     * @return <tt>true</tt> if this list changed as a result of the call.
+     * @return true if this list changed as a result of the call.
      * @see List#addAll(int, Collection)
      */
     boolean addCards(int index, Collection<? extends C> c);
@@ -125,7 +125,7 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
     void shuffle();
 
     /**
-     * Should sort this in a consistent manner.
+     * SHOULD sort this in a consistent manner.
      * <p>
      * Any number of calls to this method on the same
      * Deck should produce the same ordering of Cards
