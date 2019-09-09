@@ -185,7 +185,6 @@ public class Cardset implements structure.ICardset<Card> {
      *
      * @param cards array to be bound.
      */
-    @Deprecated
     @Override
     public void bind(Card[] cards) {
         Binder.bind(cards, this);

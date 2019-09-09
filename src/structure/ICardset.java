@@ -139,7 +139,6 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
      *
      * @param cards array to be bound.
      */
-    @Deprecated
     void bind(C[] cards);
 
     /**

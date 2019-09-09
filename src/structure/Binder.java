@@ -1,11 +1,9 @@
 package structure;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("UnusedReturnValue")
-@Deprecated
 public abstract class Binder extends Thread {
 
     /**
@@ -21,42 +19,47 @@ public abstract class Binder extends Thread {
      * @param <T>     subclass of Cardset.
      * @return a thread that is already started which will ensure only elements in the array appear in the list.
      */
-    @Deprecated
     public static <C extends ICard, T extends ICardset<C>> Thread bind(C[] cards, T cardset) {
         Thread thread = new Thread(() -> {
-            List<C> boundAsList;
             cardset.clear();
             cardset.addCards(cards);
-            ArrayList<C> cardsToAdd = new ArrayList<>();
-            ArrayList<C> cardsToRemove = new ArrayList<>();
+
+            List<C> cardsToAdd = new ArrayList<>();
+            List<C> cardsToRemove = new ArrayList<>();
+
+            boolean found;
 
             while (Thread.currentThread().isAlive()) {
-                boundAsList = Arrays.asList(cards);
-
-                // Check for added cards
-                cardsToAdd.clear();
-                for (C boundCard : boundAsList) {
-                    if (!cardset.contains(boundCard)) {
-                        cardsToAdd.add(boundCard);
+                for (C card : cards) {
+                    found = cardset.contains(card);
+                    if (!found) {
+                        cardsToAdd.add(card);
                     }
                 }
-
-                // Check for removed cards
-                cardsToRemove.clear();
-                for (C existing : cardset) {
-                    if (!boundAsList.contains(existing)) {
-                        cardsToRemove.add(existing);
-                    }
-                }
-
-                // Add and remove cards
                 cardset.addCards(cardsToAdd);
+                cardsToAdd.clear();
+
+                for (C card : cardset) {
+                    found = false;
+                    for (C test : cards) {
+                        if (test == card) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        cardsToRemove.add(card);
+                    }
+                }
                 cardset.removeCards(cardsToRemove);
+                cardsToRemove.clear();
             }
         });
+
         thread.setDaemon(true);
         thread.start();
 
         return thread;
     }
+
 }

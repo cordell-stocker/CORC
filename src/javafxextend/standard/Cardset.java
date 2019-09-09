@@ -195,7 +195,6 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      *
      * @param cards array to be bound.
      */
-    @Deprecated
     @Override
     public void bind(Card[] cards) {
         Binder.bind(cards, this);
