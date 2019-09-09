@@ -30,4 +30,17 @@ public class Deck extends Cardset implements structure.Deck<Card>, ObservableLis
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < this.size() - 1; i++) {
+            sb.append(this.getCard(i).getDescription()).append(", ");
+        }
+        if (this.size() > 0) {
+            sb.append(this.getCard(this.size() - 1).getDescription()).append("]");
+        }
+        return sb.toString();
+    }
+
 }
