@@ -10,14 +10,14 @@ import exception.MissingDeckException;
  * be the first in line to be removed.
  * <p>
  * Any game using this class SHOULD implement their
- * own version of Deck, and then use the {@link Deck#setDeck(Deck)}
+ * own version of Deck, and then use the {@link IDeck#setDeck(IDeck)}
  * method to follow the singleton design pattern throughout
  * a game implementation.
  *
  * @param <C> The subclass of {@link ICard} to be stored.
  */
 @SuppressWarnings("unused")
-public interface Deck<C extends ICard> extends ICardset<C> {
+public interface IDeck<C extends ICard> extends ICardset<C> {
 
     /**
      * Throws an {@link exception.MissingDeckException} if
@@ -25,7 +25,7 @@ public interface Deck<C extends ICard> extends ICardset<C> {
      *
      * @return The stored Deck to be used across a game.
      */
-    static Deck getDeck() {
+    static IDeck getDeck() {
         if (DeckContainer.getDeck() == null) {
             throw new MissingDeckException();
         }
@@ -35,7 +35,7 @@ public interface Deck<C extends ICard> extends ICardset<C> {
     /**
      * @param deck The Deck to be used across a game.
      */
-    static void setDeck(Deck deck) {
+    static void setDeck(IDeck deck) {
         DeckContainer.setDeck(deck);
     }
 

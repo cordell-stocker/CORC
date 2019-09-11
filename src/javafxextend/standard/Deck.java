@@ -4,9 +4,10 @@ import exception.EmptyDeckException;
 import standard.Card;
 import standard.Face;
 import standard.Suit;
+import structure.IDeck;
 
 @SuppressWarnings("unused")
-public class Deck extends Cardset implements structure.Deck<Card>, ObservableList<Card> {
+public class Deck extends Cardset implements IDeck<Card>, ObservableList<Card> {
 
     public Deck() {
         this.reset();

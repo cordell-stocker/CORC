@@ -1,26 +1,26 @@
 package structure;
 
 /**
- * Holds an instance of a {@link Deck} object.
+ * Holds an instance of a {@link IDeck} object.
  * <p>
  * Main purpose is for the Deck interface static methods to be
  * able to set a "global" Deck object.
  */
 final class DeckContainer {
 
-    private static Deck deck;
+    private static IDeck deck;
 
     /**
-     * @param deck the {@link Deck} to be stored.
+     * @param deck the {@link IDeck} to be stored.
      */
-    static void setDeck(Deck deck) {
+    static void setDeck(IDeck deck) {
         DeckContainer.deck = deck;
     }
 
     /**
-     * @return the stored {@link Deck}.
+     * @return the stored {@link IDeck}.
      */
-    static Deck getDeck() {
+    static IDeck getDeck() {
         return DeckContainer.deck;
     }
 }
