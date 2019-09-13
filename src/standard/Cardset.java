@@ -1,22 +1,12 @@
-package javafxextend.standard;
+package standard;
 
-import javafx.beans.property.SimpleListProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import standard.Card;
 import structure.Binder;
-import structure.ICardset;
 
 import java.util.*;
 
-@SuppressWarnings("WeakerAccess")
-public class Cardset implements ICardset<Card>, ObservableList<Card> {
+public class Cardset implements structure.ICardset<Card> {
 
-    private final SimpleListProperty<Card> CARDS;
-
-    public Cardset() {
-        this.CARDS = new SimpleListProperty<>(FXCollections.observableArrayList());
-    }
+    private final ArrayList<Card> CARDS = new ArrayList<>();
 
     /**
      * @param card Card to be added.
@@ -335,15 +325,5 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
     @Override
     public List<Card> subList(int fromIndex, int toIndex) {
         return this.CARDS.subList(fromIndex, toIndex);
-    }
-
-    @Override
-    public void addListener(ListChangeListener<Card> listener) {
-        this.CARDS.addListener(listener);
-    }
-
-    @Override
-    public void removeListener(ListChangeListener<Card> listener) {
-        this.CARDS.removeListener(listener);
     }
 }
