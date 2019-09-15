@@ -200,6 +200,10 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
         Binder.bind(cards, this);
     }
 
+    public void bind(Cardset otherCardset) {
+        this.CARDS.bindBidirectional(otherCardset.CARDS);
+    }
+
     /**
      * @return the number of elements in this list
      * @see List#size()
