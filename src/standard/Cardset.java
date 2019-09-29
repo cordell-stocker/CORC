@@ -287,6 +287,7 @@ public class Cardset implements ICardset<Card> {
      */
     @Override
     public void clear() {
+        this.fireCardsRemoved(this.getCards());
         this.CARDS.clear();
     }
 
@@ -356,7 +357,13 @@ public class Cardset implements ICardset<Card> {
     }
 
     private void fireCardsAdded(Card[] cards) {
-        this.fireCardsAdded(Arrays.asList(cards));
+        List<Card> reals = new ArrayList<>();
+        for (Card card : cards) {
+            if (card != null) {
+                reals.add(card);
+            }
+        }
+        this.fireCardsAdded(reals);
     }
 
     private void fireCardsAdded(List<? extends Card> cards) {
@@ -366,7 +373,13 @@ public class Cardset implements ICardset<Card> {
     }
 
     private void fireCardsRemoved(Card[] cards) {
-        this.fireCardsRemoved(Arrays.asList(cards));
+        List<Card> reals = new ArrayList<>();
+        for (Card card : cards) {
+            if (card != null) {
+                reals.add(card);
+            }
+        }
+        this.fireCardsRemoved(reals);
     }
 
     private void fireCardsRemoved(List<? extends Card> cards) {

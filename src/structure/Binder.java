@@ -15,16 +15,16 @@ public abstract class Binder extends Thread {
      * This method will creates large amounts of garbage. As such, this method
      * SHOULD be avoided whenever possible.
      *
-     * @param cards   an array of cards to bind to the list.
-     * @param cardset a list to be bound to the array of cards.
+     * @param source   an array of cards to bind to the list.
+     * @param dest a list to be bound to the array of cards.
      * @param <C>     subclass of Card.
      * @param <T>     subclass of Cardset.
      * @return a thread that is already started which will ensure only elements in the array appear in the list.
      */
-    public static <C extends ICard, T extends ICardset<C>> Thread bind(C[] cards, T cardset) {
+    public static <C extends ICard, T extends ICardset<C>> Thread bind(C[] source, T dest) {
         Thread thread = new Thread(() -> {
-            cardset.clear();
-            cardset.addCards(cards);
+            dest.clear();
+            dest.addCards(source);
 
             List<C> cardsToAdd = new ArrayList<>();
             List<C> cardsToRemove = new ArrayList<>();
@@ -32,20 +32,22 @@ public abstract class Binder extends Thread {
             boolean found;
 
             while (Thread.currentThread().isAlive()) {
-                for (C card : cards) {
-                    found = cardset.contains(card);
-                    if (!found) {
-                        cardsToAdd.add(card);
+                for (C card : source) {
+                    if (card != null) {
+                        found = dest.contains(card);
+                        if (!found) {
+                            cardsToAdd.add(card);
+                        }
                     }
                 }
                 if (cardsToAdd.size() > 0) {
-                    cardset.addCards(cardsToAdd);
+                    dest.addCards(cardsToAdd);
                     cardsToAdd.clear();
                 }
 
-                for (C card : cardset) {
+                for (C card : dest) {
                     found = false;
-                    for (C test : cards) {
+                    for (C test : source) {
                         if (test == card) {
                             found = true;
                             break;
@@ -56,7 +58,7 @@ public abstract class Binder extends Thread {
                     }
                 }
                 if (cardsToRemove.size() > 0) {
-                    cardset.removeCards(cardsToRemove);
+                    dest.removeCards(cardsToRemove);
                     cardsToRemove.clear();
                 }
 

@@ -17,15 +17,42 @@ public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCa
 
     private final Pane HAND_PANE;
     private final List<CIV> CARD_IMAGE_VIEWS = new ArrayList<>();
+
+    private volatile boolean addingCards;
+    private volatile boolean removingCards;
     private ICardsetListener<C> listener = new ICardsetListener<C>() {
         @Override
         public void cardsAdded(List<? extends C> cards) {
-            Platform.runLater(() -> addCards(cards));
+            addingCards = true;
+            Platform.runLater(() -> {
+                addCards(cards);
+                addingCards = false;
+            });
+
+            while (addingCards) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         @Override
         public void cardsRemoved(List<? extends C> cards) {
-            Platform.runLater(() -> removeCards(cards));
+            removingCards = true;
+            Platform.runLater(() -> {
+                removeCards(cards);
+                removingCards = false;
+            });
+
+            while (removingCards) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     };
 
