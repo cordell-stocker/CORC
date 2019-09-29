@@ -1,21 +1,18 @@
-package javafxextend.standard;
+package standard;
 
-import javafx.beans.property.SimpleListProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import standard.Card;
 import structure.Binder;
 import structure.ICardset;
+import structure.ICardsetListener;
 
 import java.util.*;
 
-@SuppressWarnings("WeakerAccess")
-public class Cardset implements ICardset<Card>, ObservableList<Card> {
+public class Cardset implements ICardset<Card> {
 
-    private final SimpleListProperty<Card> CARDS;
+    private final List<ICardsetListener<Card>> LISTENERS = new ArrayList<>();
+    private final List<Card> CARDS;
 
-    public Cardset() {
-        this.CARDS = new SimpleListProperty<>(FXCollections.observableArrayList());
+    public Cardset(List<Card> cards) {
+        this.CARDS = cards;
     }
 
     /**
@@ -25,6 +22,7 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      */
     @Override
     public boolean addCard(Card card) {
+        this.fireCardsAdded(new Card[]{card});
         return this.CARDS.add(card);
     }
 
@@ -35,6 +33,7 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      */
     @Override
     public void addCard(int index, Card card) {
+        this.fireCardsAdded(new Card[]{card});
         this.CARDS.add(index, card);
     }
 
@@ -45,6 +44,7 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      */
     @Override
     public boolean addCards(Card[] cards) {
+        this.fireCardsAdded(cards);
         return this.CARDS.addAll(Arrays.asList(cards));
     }
 
@@ -54,7 +54,8 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      * @see List#addAll(Collection)
      */
     @Override
-    public boolean addCards(Collection<Card> cards) {
+    public boolean addCards(List<Card> cards) {
+        this.fireCardsAdded(cards);
         return this.CARDS.addAll(cards);
     }
 
@@ -66,7 +67,8 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      * @see List#addAll(int, Collection)
      */
     @Override
-    public boolean addCards(int index, Collection<? extends Card> cards) {
+    public boolean addCards(int index, List<? extends Card> cards) {
+        this.fireCardsAdded(cards);
         return this.CARDS.addAll(index, cards);
     }
 
@@ -77,6 +79,7 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      */
     @Override
     public boolean removeCard(Card card) {
+        this.fireCardsRemoved(new Card[]{card});
         return this.CARDS.remove(card);
     }
 
@@ -87,7 +90,9 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      */
     @Override
     public Card removeCard(int index) {
-        return this.CARDS.remove(index);
+        Card card = this.CARDS.remove(index);
+        this.fireCardsRemoved(new Card[]{card});
+        return card;
     }
 
     /**
@@ -97,6 +102,7 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      */
     @Override
     public boolean removeCards(Card[] cards) {
+        this.fireCardsRemoved(cards);
         return this.CARDS.removeAll(Arrays.asList(cards));
     }
 
@@ -106,7 +112,8 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      * @see List#removeAll(Collection)
      */
     @Override
-    public boolean removeCards(Collection<Card> cards) {
+    public boolean removeCards(List<Card> cards) {
+        this.fireCardsRemoved(cards);
         return this.CARDS.removeAll(cards);
     }
 
@@ -144,7 +151,10 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      */
     @Override
     public Card setCard(int index, Card card) {
-        return this.CARDS.set(index, card);
+        Card oldCard = this.CARDS.set(index, card);
+        this.fireCardsRemoved(new Card[]{oldCard});
+        this.fireCardsAdded(new Card[]{card});
+        return oldCard;
     }
 
     /**
@@ -153,7 +163,7 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      * @see List#retainAll(Collection)
      */
     @Override
-    public boolean retainCards(Collection<?> cards) {
+    public boolean retainCards(List<?> cards) {
         //noinspection SuspiciousMethodCalls
         return this.CARDS.retainAll(cards);
     }
@@ -198,10 +208,6 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
     @Override
     public void bind(Card[] cards) {
         Binder.bind(cards, this);
-    }
-
-    public void bind(Cardset otherCardset) {
-        this.CARDS.bindBidirectional(otherCardset.CARDS);
     }
 
     /**
@@ -272,7 +278,7 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
      * @see List#containsAll(Collection)
      */
     @Override
-    public boolean containsAll(Collection<?> cards) {
+    public boolean containsAll(List<?> cards) {
         return this.CARDS.containsAll(cards);
     }
 
@@ -341,13 +347,44 @@ public class Cardset implements ICardset<Card>, ObservableList<Card> {
         return this.CARDS.subList(fromIndex, toIndex);
     }
 
-    @Override
-    public void addListener(ListChangeListener<Card> listener) {
-        this.CARDS.addListener(listener);
+    public void addCardsetListener(ICardsetListener<Card> listener) {
+        this.LISTENERS.add(listener);
+    }
+
+    public void removeCardsetListener(ICardsetListener<Card> listener) {
+        this.LISTENERS.remove(listener);
+    }
+
+    private void fireCardsAdded(Card[] cards) {
+        this.fireCardsAdded(Arrays.asList(cards));
+    }
+
+    private void fireCardsAdded(List<? extends Card> cards) {
+        for (ICardsetListener<Card> listener : this.LISTENERS) {
+            listener.cardsAdded(cards);
+        }
+    }
+
+    private void fireCardsRemoved(Card[] cards) {
+        this.fireCardsRemoved(Arrays.asList(cards));
+    }
+
+    private void fireCardsRemoved(List<? extends Card> cards) {
+        for (ICardsetListener<Card> listener : this.LISTENERS) {
+            listener.cardsRemoved(cards);
+        }
     }
 
     @Override
-    public void removeListener(ListChangeListener<Card> listener) {
-        this.CARDS.removeListener(listener);
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < this.size() - 1; i++) {
+            sb.append(this.getCard(i).getDescription()).append(", ");
+        }
+        if (this.size() > 0) {
+            sb.append(this.getCard(this.size() - 1).getDescription()).append("]");
+        }
+        return sb.toString();
     }
 }

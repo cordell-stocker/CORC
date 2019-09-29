@@ -17,38 +17,31 @@ public class VisualHand extends AbstractVisualHand<Card, CardImageView> {
     }
 
     @Override
-    protected void update(ListChangeListener.Change<? extends Card> c) {
-        try {
-            List<CardImageView> toAdd = new ArrayList<>();
-            List<CardImageView> toRemove = new ArrayList<>();
-            while (c.next()) {
-                if (c.wasAdded()) {
-                    for (Card card : c.getAddedSubList()) {
-                        CardImageView cardImageView = new CardImageView(card);
-                        toAdd.add(cardImageView);
-                    }
-                }
-                if (c.wasRemoved()) {
-                    for (Card card : c.getRemoved()) {
-                        for (CardImageView cardImageView : this.getSavedCardImageViews()) {
-                            if (cardImageView.getCard() == card) {
-                                toRemove.add(cardImageView);
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            for (CardImageView cardImageView : toRemove) {
-                this.removeCardImageView(cardImageView);
-            }
-            for (CardImageView cardImageView : toAdd) {
-                this.addCardImageView(cardImageView);
-            }
-        } catch (NullPointerException npe) {
-            Console.printWarning("[CORC] VisualHand encountered NullPointerException. Ignoring Exception");
-        } catch (IndexOutOfBoundsException ioobe) {
-            Console.printSevere("[CORC] VisualHand encountered IndexOutOfBoundsException. Ignoring Exception");
+    protected void addCards(List<? extends Card> cards) {
+        List<CardImageView> toAdd = new ArrayList<>();
+        for (Card card : cards) {
+            CardImageView cardImageView = new CardImageView(card);
+            toAdd.add(cardImageView);
+        }
+        for (CardImageView cardImageView : toAdd) {
+            this.addCardImageView(cardImageView);
         }
     }
+
+    @Override
+    protected void removeCards(List<? extends Card> cards) {
+        List<CardImageView> toRemove = new ArrayList<>();
+        for (Card card : cards) {
+            for (CardImageView cardImageView : this.getSavedCardImageViews()) {
+                if (cardImageView.getCard() == card) {
+                    toRemove.add(cardImageView);
+                    break;
+                }
+            }
+        }
+        for (CardImageView cardImageView : toRemove) {
+            this.removeCardImageView(cardImageView);
+        }
+    }
+
 }

@@ -39,7 +39,7 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
      * @return true if this list changed as a result of the call.
      * @see List#addAll(Collection)
      */
-    boolean addCards(Collection<C> cards);
+    boolean addCards(List<C> cards);
 
     /**
      * @param index index at which to insert the first element from the
@@ -48,7 +48,7 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
      * @return true if this list changed as a result of the call.
      * @see List#addAll(int, Collection)
      */
-    boolean addCards(int index, Collection<? extends C> c);
+    boolean addCards(int index, List<? extends C> c);
 
     /**
      * @param card Card to be removed
@@ -76,7 +76,7 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
      * @return true if this Cardset changed as a result of the call.
      * @see List#removeAll(Collection)
      */
-    boolean removeCards(Collection<C> cards);
+    boolean removeCards(List<C> cards);
 
     /**
      * @param index specified card to get.
@@ -106,7 +106,7 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
      * @return <tt>true</tt> if this list changed as a result of the call
      * @see List#retainAll(Collection)
      */
-    boolean retainCards(Collection<?> c);
+    boolean retainCards(List<?> c);
 
     /**
      * SHOULD randomly shuffle this. Such that the Cards
@@ -188,7 +188,7 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
      * specified collection
      * @see List#containsAll(Collection)
      */
-    boolean containsAll(Collection<?> c);
+    boolean containsAll(List<?> c);
 
     /**
      * @see List#clear()
