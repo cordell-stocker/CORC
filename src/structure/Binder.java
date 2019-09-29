@@ -1,5 +1,7 @@
 package structure;
 
+import core.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +38,10 @@ public abstract class Binder extends Thread {
                         cardsToAdd.add(card);
                     }
                 }
-                cardset.addCards(cardsToAdd);
-                cardsToAdd.clear();
+                if (cardsToAdd.size() > 0) {
+                    cardset.addCards(cardsToAdd);
+                    cardsToAdd.clear();
+                }
 
                 for (C card : cardset) {
                     found = false;
@@ -51,8 +55,16 @@ public abstract class Binder extends Thread {
                         cardsToRemove.add(card);
                     }
                 }
-                cardset.removeCards(cardsToRemove);
-                cardsToRemove.clear();
+                if (cardsToRemove.size() > 0) {
+                    cardset.removeCards(cardsToRemove);
+                    cardsToRemove.clear();
+                }
+
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
