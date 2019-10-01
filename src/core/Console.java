@@ -2,6 +2,7 @@ package core;
 
 import structure.ICard;
 
+import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
@@ -44,6 +45,10 @@ public class Console {
 
     private static void print(String prefix, String message) {
         System.out.println(prefix + message + Console.ANSI_RESET);
+    }
+
+    public static String cardsAsString(ICard[] cards) {
+        return Console.cardsAsString(Arrays.asList(cards));
     }
 
     public static String cardsAsString(List<? extends ICard> cards) {

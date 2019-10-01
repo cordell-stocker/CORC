@@ -1,5 +1,6 @@
 package standard;
 
+import core.Console;
 import structure.Binder;
 import structure.ICardset;
 import structure.ICardsetListener;
@@ -287,7 +288,7 @@ public class Cardset implements ICardset<Card> {
      */
     @Override
     public void clear() {
-        this.fireCardsRemoved(this.getCards());
+        this.fireCardsRemoved(this.CARDS);
         this.CARDS.clear();
     }
 
