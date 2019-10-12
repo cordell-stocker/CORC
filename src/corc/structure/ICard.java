@@ -11,12 +11,12 @@ package corc.structure;
 public interface ICard<C extends ICard> extends Comparable<C> {
 
     /**
-     * @return All the CardProperties contained by this Card.
+     * @return All the CardProperties contained by this.
      */
     CardProperty[] getCardProperties();
 
     /**
-     * @return A String describing this Card.
+     * @return A String describing this.
      */
     String getDescription();
 }

@@ -15,7 +15,7 @@ public class VisualHand extends AbstractVisualHand<Card, CardImageView> {
     }
 
     @Override
-    protected void addCards(List<? extends Card> cards) {
+    protected synchronized void addCards(List<? extends Card> cards) {
         List<CardImageView> toAdd = new ArrayList<>();
         for (Card card : cards) {
             CardImageView cardImageView = new CardImageView(card);
@@ -27,7 +27,7 @@ public class VisualHand extends AbstractVisualHand<Card, CardImageView> {
     }
 
     @Override
-    protected void removeCards(List<? extends Card> cards) {
+    protected synchronized void removeCards(List<? extends Card> cards) {
         List<CardImageView> toRemove = new ArrayList<>();
         for (Card card : cards) {
             for (CardImageView cardImageView : this.getSavedCardImageViews()) {

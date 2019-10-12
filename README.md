@@ -3,6 +3,7 @@
 ## Version: 0.1.0
 
 ## Purpose
+
 This framework is designed to enable the creation of Model View Controller (\MVC\) projects for beginner programmers.
 These projects should allow the consumer to be able to write simple programs \(from their perspective\)
 that run a card game. The overall goal is to give the new programmer the experience of working with an

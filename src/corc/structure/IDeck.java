@@ -19,6 +19,8 @@ import corc.exception.MissingDeckException;
 @SuppressWarnings("unused")
 public interface IDeck<C extends ICard> extends ICardset<C> {
 
+    DeckContainer CONTAINER = new DeckContainer();
+
     /**
      * Throws an {@link corc.exception.MissingDeckException} if
      * no deck has been set.
@@ -26,17 +28,17 @@ public interface IDeck<C extends ICard> extends ICardset<C> {
      * @return The stored Deck to be used across a game.
      */
     static IDeck getDeck() {
-        if (DeckContainer.getDeck() == null) {
+        if (CONTAINER.getDeck() == null) {
             throw new MissingDeckException();
         }
-        return DeckContainer.getDeck();
+        return CONTAINER.getDeck();
     }
 
     /**
      * @param deck The Deck to be used across a game.
      */
     static void setDeck(IDeck deck) {
-        DeckContainer.setDeck(deck);
+        CONTAINER.setDeck(deck);
     }
 
     /**

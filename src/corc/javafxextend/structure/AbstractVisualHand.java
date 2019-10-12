@@ -19,6 +19,7 @@ public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCa
 
     private volatile boolean addingCards;
     private volatile boolean removingCards;
+
     private ICardsetListener<C> listener = new ICardsetListener<C>() {
         @Override
         public void cardsAdded(List<? extends C> cards) {

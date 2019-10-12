@@ -3,24 +3,25 @@ package corc.structure;
 /**
  * Holds an instance of a {@link IDeck} object.
  * <p>
- * Main purpose is for the Deck interface static methods to be
- * able to set a "global" Deck object.
+ * This is a container to allow the passing around of an
+ * IDeck that may be changed to a different instance of
+ * an IDeck over time.
  */
-final class DeckContainer {
+public class DeckContainer {
 
-    private static IDeck deck;
+    private IDeck deck;
 
     /**
      * @param deck the {@link IDeck} to be stored.
      */
-    static void setDeck(IDeck deck) {
-        DeckContainer.deck = deck;
+    public void setDeck(IDeck deck) {
+        this.deck = deck;
     }
 
     /**
      * @return the stored {@link IDeck}.
      */
-    static IDeck getDeck() {
-        return DeckContainer.deck;
+    public IDeck getDeck() {
+        return this.deck;
     }
 }
