@@ -1,5 +1,6 @@
 package corc.standard;
 
+import corc.core.Logger;
 import corc.exception.EmptyDeckException;
 import corc.structure.IDeck;
 
@@ -15,6 +16,7 @@ public class Deck extends Cardset implements IDeck<Card> {
     @Override
     public Card drawCard() {
         if (this.isEmpty()) {
+            Logger.logSevere("Attempted call to Deck#drawCard() when Deck is empty.");
             throw new EmptyDeckException();
         }
         return this.removeCard(this.size() - 1);

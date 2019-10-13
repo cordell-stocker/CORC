@@ -1,5 +1,6 @@
 package corc.javafxextend.structure;
 
+import corc.core.Logger;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import corc.structure.ICard;
@@ -10,7 +11,7 @@ public abstract class AbstractCardImageView<C extends ICard> extends ImageView i
     private final String FRONT_URL, BACK_URL;
     private final C CARD;
 
-    private boolean isFaceUp = true;
+    private boolean isFaceUp;
 
     public AbstractCardImageView(C card, String frontUrl, String backUrl, boolean isFaceUp) {
         this.CARD = card;
@@ -20,13 +21,28 @@ public abstract class AbstractCardImageView<C extends ICard> extends ImageView i
         this.update();
     }
 
-    public <I extends AbstractCardImageView<C>> AbstractCardImageView(I cardImageView) {
-        this(cardImageView.getCard(), cardImageView.getFrontUrl(), cardImageView.getBackUrl(), cardImageView.isFaceUp());
+    public <T extends AbstractCardImageView<C>> AbstractCardImageView(T cardImageView) {
+        this(
+                cardImageView.getCard(),
+                cardImageView.getFrontUrl(),
+                cardImageView.getBackUrl(),
+                cardImageView.isFaceUp()
+        );
     }
 
     private void update() {
         String url = this.isFaceUp ? this.FRONT_URL : this.BACK_URL;
-        this.setImage(new Image(url));
+        try {
+            Image image = new Image(url);
+            this.setImage(image);
+            Logger.logInfo(
+                    "Created CardImageView with Card: " + this.CARD + ", using URLS: " +
+                            this.FRONT_URL + " :: " + this.BACK_URL
+            );
+        } catch (IllegalArgumentException e) {
+            Logger.logSevere("Failed to create CardImageView with Card: " + this.CARD +
+                    ", using URLS: " + this.FRONT_URL + " :: " + this.BACK_URL);
+        }
     }
 
     public void setIsFaceUp(boolean isFaceUp) {

@@ -1,5 +1,6 @@
 package corc.javafxextend.structure;
 
+import corc.core.Logger;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -11,31 +12,26 @@ import corc.structure.ICardsetListener;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings({"WeakerAccess", "unused"})
 public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCardImageView<C>> extends BorderPane {
 
     private final Pane HAND_PANE;
-    private final List<CIV> CARD_IMAGE_VIEWS = new ArrayList<>();
+    private final ObservableList<Node> HAND_PANE_CHILDREN;
+    private final List<CIV> SAVED_CARD_IMAGE_VIEWS = new ArrayList<>();
 
     private volatile boolean addingCards;
     private volatile boolean removingCards;
 
-    private ICardsetListener<C> listener = new ICardsetListener<C>() {
+    private ICardsetListener<C> listener = new ICardsetListener<>() {
         @Override
         public void cardsAdded(List<? extends C> cards) {
             addingCards = true;
             Platform.runLater(() -> {
                 addCards(cards);
                 addingCards = false;
+                startNotifyAll();
             });
 
-            while (addingCards) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+            startWaitForAdding();
         }
 
         @Override
@@ -44,20 +40,16 @@ public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCa
             Platform.runLater(() -> {
                 removeCards(cards);
                 removingCards = false;
+                startNotifyAll();
             });
 
-            while (removingCards) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+            startWaitForRemoving();
         }
     };
 
     public AbstractVisualHand(Pane handPane) {
         this.HAND_PANE = handPane;
+        this.HAND_PANE_CHILDREN = handPane.getChildren();
         this.setCenter(handPane);
     }
 
@@ -65,44 +57,96 @@ public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCa
 
     protected abstract void removeCards(List<? extends C> cards);
 
+    /**
+     * By default, this method will add the CardImageView to
+     * both the saved list and the handpane's children.
+     *
+     * @param cardImageView the CardImageView to be added.
+     */
     protected void addCardImageView(CIV cardImageView) {
         this.addToSavedOnly(cardImageView);
         this.addToDisplayOnly(cardImageView);
     }
 
+    /**
+     * By default, this method will remove the CardImageView
+     * from both the saved list and the handpane's children.
+     *
+     * @param cardImageView the CardImageView to be removed.
+     */
     protected void removeCardImageView(CIV cardImageView) {
         this.removeFromSavedOnly(cardImageView);
         this.removeFromDisplayOnly(cardImageView);
     }
 
+    @SuppressWarnings("WeakerAccess")
     protected final void addToDisplayOnly(CIV cardImageView) {
-        ObservableList<Node> children = this.HAND_PANE.getChildren();
-        children.remove(cardImageView);
-        children.add(cardImageView);
+        this.HAND_PANE_CHILDREN.remove(cardImageView);
+        this.HAND_PANE_CHILDREN.add(cardImageView);
     }
 
+    @SuppressWarnings("WeakerAccess")
     protected final void removeFromDisplayOnly(CIV cardImageView) {
-        this.HAND_PANE.getChildren().remove(cardImageView);
+        this.HAND_PANE_CHILDREN.remove(cardImageView);
     }
 
+    @SuppressWarnings("WeakerAccess")
     protected final void addToSavedOnly(CIV cardImageView) {
-        this.CARD_IMAGE_VIEWS.add(cardImageView);
+        this.SAVED_CARD_IMAGE_VIEWS.add(cardImageView);
     }
 
+    @SuppressWarnings("WeakerAccess")
     protected final void removeFromSavedOnly(CIV cardImageView) {
-        this.CARD_IMAGE_VIEWS.remove(cardImageView);
+        this.SAVED_CARD_IMAGE_VIEWS.remove(cardImageView);
     }
 
-    public ICardsetListener<C> getListener() {
+    /**
+     * synchronized forces the caller to own this
+     * object's monitor first, before performing
+     * any actions.
+     */
+    private synchronized void startWaitForAdding() {
+        /*
+         * Why still use a boolean flag? Because a Thread can be
+         * woken up before the true condition is met.
+         */
+        while (addingCards) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                Logger.logFatal(Thread.currentThread().getName() + " was Interrupted while waiting for Cards " +
+                        "to be added.\n", e);
+            }
+        }
+    }
+
+    private synchronized void startWaitForRemoving() {
+        while (removingCards) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                Logger.logFatal(Thread.currentThread().getName() + " was Interrupted while waiting for Cards " +
+                        "to be removed.\n", e);
+            }
+        }
+    }
+
+    private synchronized void startNotifyAll() {
+        notifyAll();
+    }
+
+    @SuppressWarnings("unused")
+    public ICardsetListener<C> getCardsetListener() {
         return this.listener;
     }
 
+    @SuppressWarnings("unused")
     public Pane getHandPane() {
         return this.HAND_PANE;
     }
 
-    public List<CIV> getSavedCardImageViews() {
-        return this.CARD_IMAGE_VIEWS;
+    protected List<CIV> getSavedCardImageViews() {
+        return this.SAVED_CARD_IMAGE_VIEWS;
     }
 
 }

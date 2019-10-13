@@ -62,4 +62,8 @@ public class Card implements ICard<Card> {
     public String getDescription() {
         return String.format("%s OF %s", this.FACE.getName(), this.SUIT.getName());
     }
+
+    public String toString() {
+        return getDescription();
+    }
 }

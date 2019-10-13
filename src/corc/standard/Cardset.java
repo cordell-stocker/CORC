@@ -138,7 +138,7 @@ public class Cardset implements ICardset<Card> {
         int size = this.CARDS.size();
         Card[] cards = new Card[size];
         for (int i = 0; i < size; i++) {
-            cards[i] = new Card(this.CARDS.get(i));
+            cards[i] = this.CARDS.get(i);
         }
         return cards;
     }
@@ -164,6 +164,15 @@ public class Cardset implements ICardset<Card> {
      */
     @Override
     public boolean retainCards(List<?> cards) {
+        List<Card> removedCards = new ArrayList<>();
+        for (Card card : this) {
+            if (!cards.contains(card)) {
+                removedCards.add(card);
+            }
+        }
+        if (removedCards.size() > 0) {
+            this.fireCardsRemoved(removedCards);
+        }
         //noinspection SuspiciousMethodCalls
         return this.CARDS.retainAll(cards);
     }
@@ -357,13 +366,13 @@ public class Cardset implements ICardset<Card> {
     }
 
     private void fireCardsAdded(Card[] cards) {
-        List<Card> reals = new ArrayList<>();
+        List<Card> nonNullCards = new ArrayList<>();
         for (Card card : cards) {
             if (card != null) {
-                reals.add(card);
+                nonNullCards.add(card);
             }
         }
-        this.fireCardsAdded(reals);
+        this.fireCardsAdded(nonNullCards);
     }
 
     private void fireCardsAdded(List<? extends Card> cards) {
@@ -373,13 +382,13 @@ public class Cardset implements ICardset<Card> {
     }
 
     private void fireCardsRemoved(Card[] cards) {
-        List<Card> reals = new ArrayList<>();
+        List<Card> nonNullCards = new ArrayList<>();
         for (Card card : cards) {
             if (card != null) {
-                reals.add(card);
+                nonNullCards.add(card);
             }
         }
-        this.fireCardsRemoved(reals);
+        this.fireCardsRemoved(nonNullCards);
     }
 
     private void fireCardsRemoved(List<? extends Card> cards) {
@@ -391,12 +400,13 @@ public class Cardset implements ICardset<Card> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        int sizeMinusOne = this.size() - 1;
         sb.append("[");
-        for (int i = 0; i < this.size() - 1; i++) {
+        for (int i = 0; i < sizeMinusOne; i++) {
             sb.append(this.getCard(i).getDescription()).append(", ");
         }
         if (this.size() > 0) {
-            sb.append(this.getCard(this.size() - 1).getDescription()).append("]");
+            sb.append(this.getCard(sizeMinusOne).getDescription()).append("]");
         }
         return sb.toString();
     }
