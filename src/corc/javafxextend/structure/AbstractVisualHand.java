@@ -108,7 +108,7 @@ public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCa
     private synchronized void startWaitForAdding() {
         /*
          * Why still use a boolean flag? Because a Thread can be
-         * woken up before the true condition is met.
+         * woken up before the condition is met.
          */
         while (addingCards) {
             try {

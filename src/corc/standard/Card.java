@@ -63,6 +63,7 @@ public class Card implements ICard<Card> {
         return String.format("%s OF %s", this.FACE.getName(), this.SUIT.getName());
     }
 
+    @Override
     public String toString() {
         return getDescription();
     }

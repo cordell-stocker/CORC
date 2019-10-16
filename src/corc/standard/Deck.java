@@ -13,6 +13,12 @@ public class Deck extends Cardset implements IDeck<Card> {
         this.reset();
     }
 
+    /**
+     * Removes and returns the next {@link Card}
+     * in this Deck.
+     *
+     * @return the next Card in this Deck.
+     */
     @Override
     public Card drawCard() {
         if (this.isEmpty()) {
@@ -22,6 +28,11 @@ public class Deck extends Cardset implements IDeck<Card> {
         return this.removeCard(this.size() - 1);
     }
 
+    /**
+     * Empties and rebuilds this Deck with
+     * all new {@link Card}s, in the default
+     * order (sorted).
+     */
     @Override
     public void reset() {
         this.clear();
