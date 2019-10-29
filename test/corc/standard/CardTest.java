@@ -68,4 +68,17 @@ public class CardTest {
         assertEquals(0, compared);
     }
 
+    @Test
+    public void equals() {
+        Card card1 = new Card(FACES[0], SUITS[1]);
+        Card card2 = new Card(FACES[0], SUITS[1]);
+        Card card3 = new Card(FACES[1], SUITS[1]);
+
+        boolean cardsAreSame = card1.equals(card2);
+        boolean cardsAreDifferent = !card1.equals(card3);
+
+        assertTrue(cardsAreSame);
+        assertTrue(cardsAreDifferent);
+    }
+
 }

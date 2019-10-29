@@ -64,7 +64,19 @@ public class Card implements ICard<Card> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        boolean isEqual = false;
+        if (o instanceof Card) {
+            boolean matchFace = this.FACE.getValue() == ((Card) o).FACE.getValue();
+            boolean matchSuit = this.SUIT.getValue() == ((Card) o).SUIT.getValue();
+            isEqual = matchFace && matchSuit;
+        }
+        return isEqual;
+    }
+
+    @Override
     public String toString() {
         return getDescription();
     }
+
 }

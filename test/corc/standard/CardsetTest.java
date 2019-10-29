@@ -95,4 +95,15 @@ public class CardsetTest {
 
         assertTrue(isSorted);
     }
+
+    @Test
+    public void contains() {
+        Cardset cards = new Cardset(makeCards(new int[]{0,1,2}));
+        Card card = new Card(FACES[5], SUITS[1]);
+        cards.addCard(card);
+
+        boolean contains = cards.contains(card);
+
+        assertTrue(contains);
+    }
 }
