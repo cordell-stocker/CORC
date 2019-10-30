@@ -2,12 +2,14 @@
 
 ## Version: 1.0.0
 
+### This program is released under license CORC (GPL version 3)
+
 ### Authors:
 
 - Cordell Stocker
   - Author of CORC
 - Lucas Burdell
-  - Author of Blackburn CardFramework (BBCF), the predecessor of this project.
+  - Author of Blackburn CardFramework (BBCF), the predecessor of CORC.
 
 ### Special thanks to:
 
