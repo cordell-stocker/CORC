@@ -1,6 +1,21 @@
 # Card Objects Rendered Correctly \(CORC\)
 
-## Version: 0.1.0
+## Version: 1.0.0
+
+### Authors:
+
+- Cordell Stocker
+  - Author of CORC
+- Lucas Burdell
+  - Author of Blackburn CardFramework (BBCF), the predecessor of this project.
+
+### Special thanks to:
+
+- Dr. Joshua Gross
+- Dr. Kevin Coogan
+- Rylee Wilson
+- Delaney Satchwell
+- Michael Hoff
 
 ## Purpose
 
@@ -24,6 +39,7 @@ NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
 RFC 2119. https://www.ietf.org/rfc/rfc2119.txt
 
 ## Notes
+
 ### Naming Convention
 
 - For student readability, interfaces MAY start with "I".
