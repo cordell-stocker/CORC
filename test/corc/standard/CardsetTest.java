@@ -1,53 +1,19 @@
 package corc.standard;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import static corc.standard.Util.getCardValue;
+import static corc.standard.Util.makeCards;
 import static org.junit.Assert.*;
 
 public class CardsetTest {
-
-    private static final Face[] FACES = Face.values();
-    private static final Suit[] SUITS = Suit.values();
-
-    public List<Card> makeCards(int[] cardValues) {
-        List<Card> cards = new ArrayList<>();
-        int suitValue;
-        int faceValue;
-        Card card;
-
-        for (int cardValue : cardValues) {
-            faceValue = cardValue % FACES.length;
-            suitValue = cardValue / FACES.length;
-            card = new Card(FACES[faceValue], SUITS[suitValue]);
-            cards.add(card);
-        }
-
-        return cards;
-    }
-
-    public int getCardValue(Card card) {
-        return card.getFace().getValue() + card.getSuit().getValue() * FACES.length;
-    }
-
-    @Test
-    public void getCardValueTest() {
-        Card card = new Card(FACES[5], SUITS[1]); // Six of Spades (6 + 13)
-
-        int cardValue = getCardValue(card);
-
-        assertEquals(19, cardValue);
-    }
 
     /**
      * A Cardset after calling Cardset#shuffle() MUST NOT
      * be the same after Cardset#shuffle() is called again.
      */
     @Test
-    public void shuffle() {
+    public void shuffleTest() {
         int size = 16;
         int[] cardValues = new int[size];
         for (int i = 0; i < size; i++) {
@@ -78,7 +44,7 @@ public class CardsetTest {
     }
 
     @Test
-    public void sort() {
+    public void sortTest() {
         Cardset cards = new Cardset(makeCards(new int[]{12, 51, 32, 6, 18, 17, 2, 48}));
 
         cards.sort();
@@ -97,9 +63,9 @@ public class CardsetTest {
     }
 
     @Test
-    public void contains() {
+    public void containsTest() {
         Cardset cards = new Cardset(makeCards(new int[]{0,1,2}));
-        Card card = new Card(FACES[5], SUITS[1]);
+        Card card = new Card(Face.FOUR, Suit.SPADES);
         cards.addCard(card);
 
         boolean contains = cards.contains(card);

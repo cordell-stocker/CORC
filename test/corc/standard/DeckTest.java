@@ -9,32 +9,13 @@ import static org.junit.Assert.*;
 
 public class DeckTest {
 
-    private static final Face[] FACES = Face.values();
-    private static final Suit[] SUITS = Suit.values();
-
-    public List<Card> makeCards(int[] cardValues) {
-        List<Card> cards = new ArrayList<>();
-        int suitValue;
-        int faceValue;
-        Card card;
-
-        for (int cardValue : cardValues) {
-            faceValue = cardValue % FACES.length;
-            suitValue = cardValue / FACES.length;
-            card = new Card(FACES[faceValue], SUITS[suitValue]);
-            cards.add(card);
-        }
-
-        return cards;
-    }
-
     /**
      * Last Card in, first Card out
      */
     @Test
-    public void drawCard() {
+    public void drawCardTest() {
         Deck deck = new Deck(new ArrayList<>());
-        Card card = new Card(FACES[6], SUITS[1]);
+        Card card = new Card(Face.SEVEN, Suit.SPADES);
         deck.addCard(card);
 
         Card drawnCard = deck.drawCard();
@@ -43,7 +24,7 @@ public class DeckTest {
     }
 
     @Test
-    public void reset() {
+    public void resetTest() {
         Deck deck = new Deck(new ArrayList<>());
         deck.clear();
 
@@ -51,8 +32,8 @@ public class DeckTest {
 
         boolean containsAllCards = true;
         List<Card> allCards = new ArrayList<>();
-        for (Suit suit : SUITS) {
-            for (Face face : FACES) {
+        for (Suit suit : Suit.values()) {
+            for (Face face : Face.values()) {
                 allCards.add(new Card(face, suit));
             }
         }
