@@ -1,6 +1,6 @@
 # Card Objects Rendered Correctly \(CORC\)
 
-## Version: 1.0.0
+## Version: 4.0.0
 
 ### This program is released under license CORC (GPL version 3)
 
