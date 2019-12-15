@@ -26,7 +26,6 @@ package corc.structure;
  *
  * @param <C> the object implementing this. Used to reference the subclass for the Comparable interface.
  */
-@SuppressWarnings("unused")
 public interface ICard<C extends ICard> extends Comparable<C> {
 
     /**

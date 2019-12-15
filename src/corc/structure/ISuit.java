@@ -24,37 +24,40 @@ package corc.structure;
  * <p>
  * SHOULD be immutable.
  * <p>
- * For example: In a corc.standard 52 card deck,
+ * For example: In a standard 52 card deck,
  * the 'Five of Spades' has a suit of 'Spades'.
+ * <p>
+ * Many card games have a notion of face and
+ * suit, so these are included in CORC.
  *
  * @param <S> the object implementing this. Used to reference the subclass for the Comparable interface.
  */
 public interface ISuit<S extends ISuit> extends CardProperty<S> {
 
     /**
-     * SHOULD be unique to this Suit.
+     * SHOULD be unique to this suit.
      * <p>
-     * For example: In a corc.standard 52 card deck,
+     * For example: In a standard 52 card deck,
      * a 'Five of Spades' would most likely return
      * 'Spades'. As would the 'Five of Hearts', since
      * 'Spades' is the suit. While the 'Six
      * of Spades' SHOULD return a different string.
      *
-     * @return The String representation of this Suit.
+     * @return The String representation of this suit.
      */
     @Override
     String getName();
 
     /**
-     * SHOULD be unique to this Suit.
+     * SHOULD be unique to this suit.
      * <p>
-     * For example: In a corc.standard 52 card deck,
+     * For example: In a standard 52 card deck,
      * a 'Five of Spades' could return
      * '2'. As would the 'Five of Hearts', since
      * 'Spades' is the suit value. While the 'Six
      * of Spades' SHOULD return a different value.
      *
-     * @return The integer value of this Suit.
+     * @return The integer value of this suit.
      */
     @Override
     int getValue();

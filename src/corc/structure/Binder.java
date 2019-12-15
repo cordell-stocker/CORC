@@ -26,17 +26,11 @@ import java.util.List;
 
 /**
  * This class provides functionality for binding
- * lists together. Whether they be regular arrays
- * or some implementation of a list.
+ * lists/arrays together.
  */
 public abstract class Binder extends Thread {
 
     /**
-     * The returned Thread object will have daemon set to true,
-     * and have been started.
-     * <p>
-     * Will have a refreshRate of 100ms.
-     *
      * @param source an array of cards to bind to the list.
      * @param dest   a {@link ICardset} to be bound to the array of cards.
      * @param <C>    subclass of Card.
@@ -44,12 +38,19 @@ public abstract class Binder extends Thread {
      * @return a thread that is already started which will ensure only
      * elements in the array will appear in the list.
      * @see Binder#bind(ICard[], ICardset, long)
+     * Will have a refreshRate of 100ms.
+     * @see Binder#bind(ICard[], ICardset, long)
      */
     public static <C extends ICard, T extends ICardset<C>> Thread bind(C[] source, T dest) {
         return Binder.bind(source, dest, 100);
     }
 
     /**
+     * Binds the contents of an {@link ICardset<C>} to an {@link ICard<C>}[].
+     * Only ICards that appear in the array, will appear in the ICardset.
+     * This is a one way binding. ICards directly added to the ICardset will
+     * be removed.
+     * <p>
      * The returned Thread object will have daemon set to true,
      * and have been started.
      *

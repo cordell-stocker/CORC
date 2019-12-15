@@ -19,7 +19,20 @@ This file is part of CORC.
 */
 package corc.structure;
 
+/**
+ * Implementations of this MAY perform actions
+ * whenever the method is called.
+ *
+ * @param <T> The class of the object being listened to.
+ */
 public interface IChangeListener<T> {
 
+    /**
+     * SHOULD be
+     * called whenever the value being listened to changes.
+     *
+     * @param oldValue the value before the change.
+     * @param newValue the value after the change.
+     */
     void valueChanged(T oldValue, T newValue);
 }

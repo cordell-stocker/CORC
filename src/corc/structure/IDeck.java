@@ -29,13 +29,12 @@ import corc.exception.MissingDeckException;
  * be the first in line to be removed.
  * <p>
  * Any game using this class SHOULD implement their
- * own version of Deck, and then use the {@link IDeck#setDeck(IDeck)}
+ * own version of Deck, and MAY use the {@link IDeck#setDeck(IDeck)}
  * method to follow the singleton design pattern throughout
  * a game implementation.
  *
  * @param <C> The subclass of {@link ICard} to be stored.
  */
-@SuppressWarnings("unused")
 public interface IDeck<C extends ICard> extends ICardset<C> {
 
     DeckContainer CONTAINER = new DeckContainer();
@@ -61,22 +60,22 @@ public interface IDeck<C extends ICard> extends ICardset<C> {
     }
 
     /**
+     * SHOULD return the most recently added card.
+     * <p>
      * SHOULD throw an {@link corc.exception.EmptyDeckException} if
      * there are no cards in this Deck.
-     * <p>
-     * SHOULD return the most recently added card.
      *
      * @return The next Card object stored in this.
      */
     C drawCard();
 
     /**
+     * SHOULD be called in the constructor.
+     * <p>
      * SHOULD contain all logic necessary for
      * clearing any contained cards, and filling
      * itself with all new cards required to play
      * a card game.
-     * <p>
-     * SHOULD be called in the constructor.
      */
     void reset();
 
