@@ -26,7 +26,6 @@ import corc.standard.Card;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("unused")
 public class VisualHand extends AbstractVisualHand<Card, CardImageView> {
 
     public VisualHand(Pane handPane) {
