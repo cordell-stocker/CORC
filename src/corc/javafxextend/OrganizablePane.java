@@ -206,6 +206,7 @@ public class OrganizablePane extends Pane {
     }
 
     public void clearSelectedNode() {
+        selectedNode.setTranslateY(0);
         selectedNode = null;
     }
 }
