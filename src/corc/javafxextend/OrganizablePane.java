@@ -26,7 +26,9 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -44,12 +46,13 @@ public class OrganizablePane extends Pane {
 
     private EventHandler<MouseEvent> mouseReleased;
     private EventHandler<MouseEvent> mouseDragged;
-    private EventHandler<MouseEvent> mouseClicked;
+    private EventHandler<MouseEvent> mousePressed;
 
     public OrganizablePane(double spacing, double verticalShift) {
         this.HORIZONTAL_SPACING = spacing;
         this.SELECTED_VERTICAL_SHIFT = verticalShift;
         this.setMouseActions();
+        this.setListener();
     }
 
     private void setListener() {
@@ -57,14 +60,14 @@ public class OrganizablePane extends Pane {
             while (c.next()) {
                 if (c.wasAdded()) {
                     for (Node node : c.getAddedSubList()) {
-                        node.setOnMouseClicked(this.mouseClicked);
+                        node.setOnMousePressed(this.mousePressed);
                         node.setOnMouseDragged(this.mouseDragged);
                         node.setOnMouseReleased(this.mouseReleased);
                     }
                 }
                 if (c.wasRemoved()) {
                     for (Node node : c.getRemoved()) {
-                        node.setOnMouseClicked(null);
+                        node.setOnMousePressed(null);
                         node.setOnMouseDragged(null);
                         node.setOnMouseReleased(null);
                         if (node == this.selectedNode) {
@@ -78,78 +81,116 @@ public class OrganizablePane extends Pane {
     }
 
     private void setMouseActions() {
-        this.setMouseClicked();
+        this.setMousePressed();
         this.setMouseDragged();
         this.setMouseReleased();
     }
 
-    private void setMouseClicked() {
-        this.mouseClicked = e -> {
-            if (e.getButton() == MouseButton.PRIMARY && e.getSource() instanceof Node) {
-                this.mouseX = e.getSceneX();
-                this.nodeBeingMoved = (Node) e.getSource();
+    private void setMousePressed() {
+        this.mousePressed = e -> {
+            try {
+                if (e.getButton() == MouseButton.PRIMARY && e.getSource() instanceof Node) {
+                    mouseX = e.getSceneX();
+                    nodeBeingMoved = (Node) e.getSource();
 
-                if (this.selectedNode != null) {
-                    this.selectedNode.setTranslateY(0);
+                    if (selectedNode != null) {
+                        selectedNode.setTranslateY(0);
+                    }
+
+                    selectedNode = nodeBeingMoved;
+                    selectedNode.setTranslateY(SELECTED_VERTICAL_SHIFT);
+                    selectedNode.setViewOrder(-1.0);
                 }
-
-                this.selectedNode = nodeBeingMoved;
-                this.selectedNode.setTranslateY(this.SELECTED_VERTICAL_SHIFT);
-                this.selectedNode.setViewOrder(-1.0);
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         };
     }
 
     private void setMouseDragged() {
         this.mouseDragged = e -> {
-            if (e.getButton() == MouseButton.PRIMARY) {
-                double deltaX = e.getSceneX() - mouseX;
-                double currentX = nodeBeingMoved.getLayoutX();
-                this.nodeBeingMoved.setLayoutX(currentX + deltaX);
-                this.mouseX = e.getSceneX();
+            try {
+                if (e.getButton() == MouseButton.PRIMARY) {
+                    double deltaX = e.getSceneX() - mouseX;
+                    double currentX = nodeBeingMoved.getLayoutX();
+                    nodeBeingMoved.setLayoutX(currentX + deltaX);
+                    mouseX = e.getSceneX();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         };
     }
 
     private void setMouseReleased() {
         this.mouseReleased = e -> {
-            nodeBeingMoved = null;
-            this.orderChildren();
-            this.selectedNode.setViewOrder(0.0);
+            try {
+                nodeBeingMoved = null;
+                selectedNode.setViewOrder(0.0);
+                orderChildren();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         };
     }
 
     public synchronized void orderChildren() {
         ObservableList<Node> children = this.getChildren();
         List<Node> copyOfChildren = new ArrayList<>(children);
-
-        children.clear();
-
-        while (!copyOfChildren.isEmpty()) {
-            Node unplacedLeftMost = copyOfChildren.get(0);
-            for (Node child : copyOfChildren) {
-                if (child.getLayoutX() < unplacedLeftMost.getLayoutX()) {
-                    unplacedLeftMost = child;
-                }
+        copyOfChildren.sort(new Comparator<Node>() {
+            @Override
+            public int compare(Node o1, Node o2) {
+                return (int)(o1.getLayoutX() - o2.getLayoutX());
             }
-            copyOfChildren.remove(unplacedLeftMost);
-            this.addNodeAfterLast(unplacedLeftMost);
+        });
+
+        for (int i = 0; i < copyOfChildren.size(); i++) {
+            if (i == 0) {
+                copyOfChildren.get(0).setLayoutX(this.getLayoutX());
+                copyOfChildren.get(0).setViewOrder(copyOfChildren.size());
+            } else {
+                addNodeAfterOther(copyOfChildren.get(i - 1), copyOfChildren.get(i), copyOfChildren.size() - i);
+            }
         }
     }
 
-    public void addNodeAfterLast(Node node) {
-        ObservableList<Node> children = this.getChildren();
-        children.add(node);
-        if (children.isEmpty()) {
-            node.setLayoutX(this.getLayoutX());
-        } else {
-            Node lastNode = children.get(children.size() - 1);
-            double lastNodeMaxX = lastNode.getLayoutX() + lastNode.getBoundsInLocal().getWidth();
-            double lastNodeLayoutY = lastNode.getLayoutY();
+    private void addNodeAfterOther(Node lead, Node follow, double order) {
+        double lastNodeMaxX = lead.getLayoutX() + lead.getBoundsInLocal().getWidth();
+        follow.setLayoutX(lastNodeMaxX + this.HORIZONTAL_SPACING);
+        follow.setViewOrder(order);
+    }
 
+    public void setNodeAfterLast(Node node) {
+        ObservableList<Node> children = this.getChildren();
+        if (!children.isEmpty()) {
+            Node last = children.get(0);
+            for (Node child : children) {
+                if (child.getLayoutX() > last.getLayoutX()) {
+                    last = child;
+                }
+            }
+            double lastNodeMaxX = last.getLayoutX() + last.getBoundsInLocal().getWidth();
             node.setLayoutX(lastNodeMaxX + this.HORIZONTAL_SPACING);
-            node.setLayoutY(lastNodeLayoutY);
+        } else {
+            node.setLayoutX(this.getLayoutX());
         }
+
+    }
+
+    private Node findLeftMost(double startX) {
+        ObservableList<Node> children = this.getChildren();
+        Node leftMost = children.get(0);
+        for (Node child : children) {
+            if (child.getLayoutX() < leftMost.getLayoutX()) {
+                leftMost = child;
+            }
+        }
+        return leftMost;
+    }
+
+    public void addNodeAfterLast(Node node) {
+        setNodeAfterLast(node);
+        this.getChildren().add(node);
     }
 
     public double getSelectedVerticalShift() {
@@ -162,5 +203,9 @@ public class OrganizablePane extends Pane {
 
     public Node getSelectedNode() {
         return selectedNode;
+    }
+
+    public void clearSelectedNode() {
+        selectedNode = null;
     }
 }

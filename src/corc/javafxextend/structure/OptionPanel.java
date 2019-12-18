@@ -29,6 +29,7 @@ public abstract class OptionPanel<T> extends VBox {
 
     @SuppressWarnings("FieldCanBeLocal")
     private final long SLEEP_TIME = 100;
+    private static String headerStyle = "-fx-background-color: WHITE; -fx-border-color: GRAY; -fx-padding: 4px; -fx-font-size: 20px"; // Default
     private volatile boolean clicked;
     private T optionClicked;
     private final double MIN_BUTTON_WIDTH = 50;
@@ -40,7 +41,7 @@ public abstract class OptionPanel<T> extends VBox {
 
         if (title.length() != 0) {
             Label header = new Label(title);
-            header.setStyle("-fx-background-color: WHITE; -fx-border-color: GRAY; -fx-padding: 4px; -fx-font-size: 20px");
+            header.setStyle(headerStyle);
             this.getChildren().add(header);
         }
 
@@ -53,6 +54,10 @@ public abstract class OptionPanel<T> extends VBox {
             });
             this.getChildren().add(button);
         }
+    }
+
+    public static void setHeaderStyle(String style) {
+        headerStyle = style;
     }
 
     protected T getOptionClicked() {
