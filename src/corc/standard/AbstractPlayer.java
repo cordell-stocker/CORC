@@ -51,7 +51,7 @@ public abstract class AbstractPlayer {
     }
 
     /**
-     * Adds an {@link ICardsetListener < Card >} to this player's stored {@link Cardset}.
+     * Adds an {@link ICardsetListener} to this player's stored {@link Cardset}.
      *
      * @param listener the ICardsetListener to be called whenever there
      *                 is a change to the stored Cardset.
@@ -61,7 +61,7 @@ public abstract class AbstractPlayer {
     }
 
     /**
-     * Removes an {@link ICardsetListener < Card >} from this player's stored {@link Cardset}.
+     * Removes an {@link ICardsetListener} from this player's stored {@link Cardset}.
      *
      * @param listener the ICardsetListener to remove from the stored Cardset.
      */

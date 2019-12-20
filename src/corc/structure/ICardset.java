@@ -121,7 +121,7 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
 
     /**
      * @param c collection containing elements to be retained in this list
-     * @return <tt>true</tt> if this list changed as a result of the call
+     * @return true if this list changed as a result of the call
      * @see List#retainAll(Collection)
      */
     boolean retainCards(List<?> c);
@@ -167,14 +167,14 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
     int size();
 
     /**
-     * @return <tt>true</tt> if this list contains no elements
+     * @return true if this list contains no elements
      * @see List#isEmpty()
      */
     boolean isEmpty();
 
     /**
      * @param o element whose presence in this list is to be tested.
-     * @return <tt>true</tt> if this list contains the specified element
+     * @return true if this list contains the specified element
      * @see List#contains(Object)
      */
     boolean contains(Object o);
@@ -193,6 +193,7 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
     Object[] toArray();
 
     /**
+     * @param <T> the type of the array passed in.
      * @param a the array into which the elements of this list are to
      *          be stored, if it is big enough; otherwise, a new array of the
      *          same runtime type is allocated for this purpose.
@@ -203,7 +204,7 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
 
     /**
      * @param c collection to be checked for containment in this list
-     * @return <tt>true</tt> if this list contains all of the elements of the
+     * @return true if this list contains all of the elements of the
      * specified collection
      * @see List#containsAll(Collection)
      */
@@ -253,4 +254,8 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
      * @see List#subList(int, int)
      */
     List<C> subList(int fromIndex, int toIndex);
+
+    void addCardsetListener(ICardsetListener<C> listener);
+
+    void removeCardsetListener(ICardsetListener<C> listener);
 }

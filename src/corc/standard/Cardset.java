@@ -82,7 +82,7 @@ public class Cardset implements ICardset<Card> {
      * @param index index at which to insert the first element from the
      *              specified collection.
      * @param cards collection containing elements to be added to this list.
-     * @return <tt>true</tt> if this list changed as a result of the call.
+     * @return true if this list changed as a result of the call.
      * @see List#addAll(int, Collection)
      */
     @Override
@@ -178,7 +178,7 @@ public class Cardset implements ICardset<Card> {
 
     /**
      * @param cards collection containing elements to be retained in this list
-     * @return <tt>true</tt> if this list changed as a result of the call
+     * @return true if this list changed as a result of the call
      * @see List#retainAll(Collection)
      */
     @Override
@@ -248,7 +248,7 @@ public class Cardset implements ICardset<Card> {
     }
 
     /**
-     * @return <tt>true</tt> if this list contains no elements
+     * @return true if this list contains no elements
      * @see List#isEmpty()
      */
     @Override
@@ -258,7 +258,7 @@ public class Cardset implements ICardset<Card> {
 
     /**
      * @param o element whose presence in this list is to be tested.
-     * @return <tt>true</tt> if this list contains the specified element
+     * @return true if this list contains the specified element
      * @see List#contains(Object)
      */
     @Override
@@ -301,7 +301,7 @@ public class Cardset implements ICardset<Card> {
 
     /**
      * @param cards collection to be checked for containment in this list
-     * @return <tt>true</tt> if this list contains all of the elements of the
+     * @return true if this list contains all of the elements of the
      * specified collection
      * @see List#containsAll(Collection)
      */
@@ -376,10 +376,12 @@ public class Cardset implements ICardset<Card> {
         return this.CARDS.subList(fromIndex, toIndex);
     }
 
+    @Override
     public void addCardsetListener(ICardsetListener<Card> listener) {
         this.LISTENERS.add(listener);
     }
 
+    @Override
     public void removeCardsetListener(ICardsetListener<Card> listener) {
         this.LISTENERS.remove(listener);
     }

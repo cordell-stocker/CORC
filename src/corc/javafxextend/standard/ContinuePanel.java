@@ -29,8 +29,8 @@ public class ContinuePanel extends OptionPanel<String> {
 
     private static String[] options = new String[]{"Continue"};
 
-    public ContinuePanel() {
-        super("", ContinuePanel.options, DEFAULT_HEADER_STYLE, DEFAULT_BUTTON_STYLE);
+    public ContinuePanel(String headerStyle, String buttonStyle) {
+        super("", ContinuePanel.options, headerStyle, buttonStyle);
     }
 
     public void getContinue() {

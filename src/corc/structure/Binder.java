@@ -46,7 +46,7 @@ public abstract class Binder extends Thread {
     }
 
     /**
-     * Binds the contents of an {@link ICardset<C>} to an {@link ICard<C>}[].
+     * Binds the contents of an {@link ICardset} to an {@link ICard}[].
      * Only ICards that appear in the array, will appear in the ICardset.
      * This is a one way binding. ICards directly added to the ICardset will
      * be removed.
