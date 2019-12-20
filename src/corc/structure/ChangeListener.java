@@ -25,11 +25,10 @@ package corc.structure;
  *
  * @param <T> The class of the object being listened to.
  */
-public interface IChangeListener<T> {
+public interface ChangeListener<T> {
 
     /**
-     * SHOULD be
-     * called whenever the value being listened to changes.
+     * SHOULD be called whenever the value being listened to changes.
      *
      * @param oldValue the value before the change.
      * @param newValue the value after the change.

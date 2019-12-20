@@ -25,19 +25,19 @@ import java.util.List;
  * Implementations of this MAY perform actions
  * whenever the methods are called.
  * <p>
- * The {@link ICardsetListener#cardsAdded(List)} SHOULD be
+ * The {@link CardsetListener#cardsAdded(List)} SHOULD be
  * called whenever the {@link ICardset}, containing a reference
  * of this class, has {@link ICard}s added. With only the added
  * ICards given to the parameter.
  * <p>
- * Likewise the {@link ICardsetListener#cardsRemoved(List)} SHOULD
+ * Likewise the {@link CardsetListener#cardsRemoved(List)} SHOULD
  * be called whenever the ICardset, containing a reference of this
  * class, has ICards removed. With only the added ICards given to
  * the parameter.
  *
  * @param <C> The subclass of {@link ICard} to be used.
  */
-public interface ICardsetListener<C extends ICard> {
+public interface CardsetListener<C extends ICard> {
 
 	/**
 	 * MAY perform actions when called.

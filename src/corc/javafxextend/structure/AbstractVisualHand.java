@@ -26,7 +26,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import corc.structure.ICard;
-import corc.structure.ICardsetListener;
+import corc.structure.CardsetListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCa
     private volatile boolean addingCards;
     private volatile boolean removingCards;
 
-    private ICardsetListener<C> listener = new ICardsetListener<>() {
+    private CardsetListener<C> listener = new CardsetListener<>() {
         @Override
         public void cardsAdded(List<? extends C> cards) {
             addingCards = true;
@@ -155,7 +155,7 @@ public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCa
     }
 
     @SuppressWarnings("unused")
-    public ICardsetListener<C> getCardsetListener() {
+    public CardsetListener<C> getCardsetListener() {
         return this.listener;
     }
 

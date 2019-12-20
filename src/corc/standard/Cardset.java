@@ -21,13 +21,14 @@ package corc.standard;
 
 import corc.structure.Binder;
 import corc.structure.ICardset;
-import corc.structure.ICardsetListener;
+import corc.structure.CardsetListener;
+import corc.structure.ListenableCardset;
 
 import java.util.*;
 
-public class Cardset implements ICardset<Card> {
+public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
 
-    private final List<ICardsetListener<Card>> LISTENERS = new ArrayList<>();
+    private final List<CardsetListener<Card>> LISTENERS = new ArrayList<>();
     private final List<Card> CARDS;
 
     public Cardset(List<Card> cards) {
@@ -300,6 +301,19 @@ public class Cardset implements ICardset<Card> {
     }
 
     /**
+     * A conversion method to allow this to behave as if this were a {@link Collection}.
+     *
+     * Returns a copy of the internal {@link List}. Modifications to the returned List
+     * will not effect the internal List.
+     *
+     * @return this iterable list of {@link Card}s as a Collection
+     */
+    @Override
+    public Collection<Card> toCollection() {
+        return new ArrayList<>(this.CARDS);
+    }
+
+    /**
      * @param cards collection to be checked for containment in this list
      * @return true if this list contains all of the elements of the
      * specified collection
@@ -377,12 +391,12 @@ public class Cardset implements ICardset<Card> {
     }
 
     @Override
-    public void addCardsetListener(ICardsetListener<Card> listener) {
+    public void addCardsetListener(CardsetListener<Card> listener) {
         this.LISTENERS.add(listener);
     }
 
     @Override
-    public void removeCardsetListener(ICardsetListener<Card> listener) {
+    public void removeCardsetListener(CardsetListener<Card> listener) {
         this.LISTENERS.remove(listener);
     }
 
@@ -397,7 +411,7 @@ public class Cardset implements ICardset<Card> {
     }
 
     private void fireCardsAdded(List<? extends Card> cards) {
-        for (ICardsetListener<Card> listener : this.LISTENERS) {
+        for (CardsetListener<Card> listener : this.LISTENERS) {
             listener.cardsAdded(cards);
         }
     }
@@ -413,7 +427,7 @@ public class Cardset implements ICardset<Card> {
     }
 
     private void fireCardsRemoved(List<? extends Card> cards) {
-        for (ICardsetListener<Card> listener : this.LISTENERS) {
+        for (CardsetListener<Card> listener : this.LISTENERS) {
             listener.cardsRemoved(cards);
         }
     }

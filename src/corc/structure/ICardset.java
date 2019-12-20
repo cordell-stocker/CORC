@@ -25,7 +25,14 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * A collection of Card objects.
+ * An iterable list of Card objects.
+ *
+ * Subclasses CAN use a subclass of a {@link Collection} underneath, and is even recommended.
+ * However, a subclass of this SHOULD NOT directly inherit from a Collection. This is to
+ * enforce the API of "addCard(ICard)" instead of a Collection's version of "add(ICard)".
+ *
+ * To account for potential needs of treating this class as a Collection, a
+ * {@link ICardset#toCollection()} has been included to the subclass to implement.
  *
  * @param <C> The subclass of {@link ICard} to be stored
  */
@@ -203,6 +210,13 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
     <T> T[] toArray(T[] a);
 
     /**
+     * A conversion method to allow this to behave as if this were a {@link Collection}.
+     *
+     * @return this iterable list of {@link ICard}s as a Collection
+     */
+    Collection<C> toCollection();
+
+    /**
      * @param c collection to be checked for containment in this list
      * @return true if this list contains all of the elements of the
      * specified collection
@@ -255,7 +269,4 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
      */
     List<C> subList(int fromIndex, int toIndex);
 
-    void addCardsetListener(ICardsetListener<C> listener);
-
-    void removeCardsetListener(ICardsetListener<C> listener);
 }

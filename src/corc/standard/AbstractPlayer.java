@@ -19,7 +19,9 @@ This file is part of CORC.
 */
 package corc.standard;
 
-import corc.structure.ICardsetListener;
+import corc.structure.CardsetListener;
+import corc.structure.ListenableCardset;
+import corc.structure.Nameable;
 
 /**
  * A general player that has a name and a {@link Cardset}.
@@ -27,7 +29,7 @@ import corc.structure.ICardsetListener;
  * A subclass will need to store a local reference of the Cardset,
  * given to the constructor, in order to modify the Cardset.
  */
-public abstract class AbstractPlayer {
+public abstract class AbstractPlayer implements Nameable, ListenableCardset<Card> {
 
     private final String NAME;
     private final Cardset CARDSET;
@@ -46,26 +48,27 @@ public abstract class AbstractPlayer {
     /**
      * @return the name of this player.
      */
+    @Override
     public String getName() {
         return this.NAME;
     }
 
     /**
-     * Adds an {@link ICardsetListener} to this player's stored {@link Cardset}.
+     * Adds an {@link CardsetListener} to this player's stored {@link Cardset}.
      *
-     * @param listener the ICardsetListener to be called whenever there
+     * @param listener the CardsetListener to be called whenever there
      *                 is a change to the stored Cardset.
      */
-    public void addCardsetListener(ICardsetListener<Card> listener) {
+    public void addCardsetListener(CardsetListener<Card> listener) {
         this.CARDSET.addCardsetListener(listener);
     }
 
     /**
-     * Removes an {@link ICardsetListener} from this player's stored {@link Cardset}.
+     * Removes an {@link CardsetListener} from this player's stored {@link Cardset}.
      *
-     * @param listener the ICardsetListener to remove from the stored Cardset.
+     * @param listener the CardsetListener to remove from the stored Cardset.
      */
-    public void removeCardsetListener(ICardsetListener<Card> listener) {
+    public void removeCardsetListener(CardsetListener<Card> listener) {
         this.CARDSET.removeCardsetListener(listener);
     }
 }
