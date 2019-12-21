@@ -24,7 +24,6 @@ import corc.standard.Card;
 import corc.standard.Face;
 import corc.standard.Suit;
 
-@SuppressWarnings({"unused", "WeakerAccess"})
 public class CardImageView extends AbstractCardImageView<Card> {
 
     private static final String RES_PATH = "corc/resources/standard/";

@@ -98,23 +98,19 @@ public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCa
         this.removeFromDisplayOnly(cardImageView);
     }
 
-    @SuppressWarnings("WeakerAccess")
     protected final void addToDisplayOnly(CIV cardImageView) {
         this.HAND_PANE_CHILDREN.remove(cardImageView);
         this.HAND_PANE_CHILDREN.add(cardImageView);
     }
 
-    @SuppressWarnings("WeakerAccess")
     protected final void removeFromDisplayOnly(CIV cardImageView) {
         this.HAND_PANE_CHILDREN.remove(cardImageView);
     }
 
-    @SuppressWarnings("WeakerAccess")
     protected final void addToSavedOnly(CIV cardImageView) {
         this.SAVED_CARD_IMAGE_VIEWS.add(cardImageView);
     }
 
-    @SuppressWarnings("WeakerAccess")
     protected final void removeFromSavedOnly(CIV cardImageView) {
         this.SAVED_CARD_IMAGE_VIEWS.remove(cardImageView);
     }
@@ -154,12 +150,10 @@ public abstract class AbstractVisualHand<C extends ICard, CIV extends AbstractCa
         notifyAll();
     }
 
-    @SuppressWarnings("unused")
     public CardsetListener<C> getCardsetListener() {
         return this.listener;
     }
 
-    @SuppressWarnings("unused")
     public Pane getHandPane() {
         return this.HAND_PANE;
     }

@@ -1,6 +1,6 @@
 # Card Objects Rendered Correctly \(CORC\)
 
-## Version: 4.0.0
+## Version: 1.0.1
 
 ### This program is released under license CORC \(GPL version 3\)
 
@@ -47,6 +47,10 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
 NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
 "OPTIONAL" in this document are to be interpreted as described in
 RFC 2119. https://www.ietf.org/rfc/rfc2119.txt
+
+## Development
+
+- Intellij Idea is the preferred IDE platform for working on this project.
 
 ## Unit Tests
 

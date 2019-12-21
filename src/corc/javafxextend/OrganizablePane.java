@@ -34,7 +34,6 @@ import java.util.List;
 /**
  * Only supports placing Nodes horizontally, with a vertical shift when selected.
  */
-@SuppressWarnings("ALL")
 public class OrganizablePane extends Pane {
 
     private final double SELECTED_VERTICAL_SHIFT;

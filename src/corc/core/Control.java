@@ -24,7 +24,6 @@ import corc.structure.ICard;
 import java.util.Arrays;
 import java.util.List;
 
-@SuppressWarnings("unused")
 public class Control {
 
     private static boolean alwaysCreateDebug = false;
@@ -55,7 +54,6 @@ public class Control {
         return Control.cardsAsString(Arrays.asList(cards));
     }
 
-    @SuppressWarnings("WeakerAccess")
     public static String cardsAsString(List<? extends ICard> cards) {
         StringBuilder sb = new StringBuilder();
         sb.append("[");

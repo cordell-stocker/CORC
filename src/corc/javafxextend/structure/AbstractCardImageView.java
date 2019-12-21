@@ -24,7 +24,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import corc.structure.ICard;
 
-@SuppressWarnings("WeakerAccess")
 public abstract class AbstractCardImageView<C extends ICard> extends ImageView implements Comparable<AbstractCardImageView<C>> {
 
     private final String FRONT_URL, BACK_URL;
