@@ -20,7 +20,7 @@ This file is part of CORC.
 package corc.structure;
 
 /**
- * Holds an instance of a {@link IDeck} object.
+ * Holds an instance of an {@link IDeck} object.
  * <p>
  * This is a container to allow the passing around of an
  * IDeck that may be changed to a different instance of

@@ -22,10 +22,10 @@ package corc.structure;
 import corc.exception.MissingDeckException;
 
 /**
- * A collection of cards used for a card game.
+ * Used to contain and create any necessary cards for a card game.
  * <p>
  * Cards SHOULD be stored in a 'stack' manner. So
- * if a Card is added to this, that same Card SHOULD
+ * if a card is added to this, that same card SHOULD
  * be the first in line to be removed.
  * <p>
  * Any game using this class SHOULD implement their
@@ -33,7 +33,7 @@ import corc.exception.MissingDeckException;
  * method to follow the singleton design pattern throughout
  * a game implementation.
  *
- * @param <C> The subclass of {@link ICard} to be stored.
+ * @param <C> the subclass of {@link ICard} to be stored.
  */
 public interface IDeck<C extends ICard> extends ICardset<C> {
 
@@ -43,7 +43,7 @@ public interface IDeck<C extends ICard> extends ICardset<C> {
      * Throws an {@link corc.exception.MissingDeckException} if
      * no deck has been set.
      *
-     * @return The stored Deck to be used across a game.
+     * @return the stored Deck to be used across a game.
      */
     static IDeck getDeck() {
         if (CONTAINER.getDeck() == null) {
@@ -53,7 +53,7 @@ public interface IDeck<C extends ICard> extends ICardset<C> {
     }
 
     /**
-     * @param deck The Deck to be used across a game.
+     * @param deck the Deck to be used across a game.
      */
     static void setDeck(IDeck deck) {
         CONTAINER.setDeck(deck);
@@ -65,7 +65,7 @@ public interface IDeck<C extends ICard> extends ICardset<C> {
      * SHOULD throw an {@link corc.exception.EmptyDeckException} if
      * there are no cards in this Deck.
      *
-     * @return The next Card object stored in this.
+     * @return the next Card object stored in this.
      */
     C drawCard();
 

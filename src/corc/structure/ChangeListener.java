@@ -23,7 +23,7 @@ package corc.structure;
  * Implementations of this MAY perform actions
  * whenever the method is called.
  *
- * @param <T> The class of the object being listened to.
+ * @param <T> the class of the object being listened to.
  */
 public interface ChangeListener<T> {
 

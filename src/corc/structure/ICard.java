@@ -24,17 +24,17 @@ package corc.structure;
  * <p>
  * SHOULD be implemented as an immutable object.
  *
- * @param <C> the object implementing this. Used to reference the subclass for the Comparable interface.
+ * @param <C> the implementing object. Used to reference the subclass for the {@link Comparable} interface.
  */
 public interface ICard<C extends ICard> extends Comparable<C> {
 
     /**
-     * @return All the CardProperties contained by this.
+     * @return all the CardProperties contained by this.
      */
     CardProperty[] getCardProperties();
 
     /**
-     * @return A String describing this.
+     * @return a String describing this.
      */
     String getDescription();
 }

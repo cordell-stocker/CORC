@@ -22,20 +22,17 @@ package corc.structure;
 /**
  * The Representation of the face of a card.
  * <p>
- * SHOULD be immutable.
+ * The implementing class SHOULD be immutable.
  * <p>
  * For example: In a standard 52 card deck,
  * the 'Five of Spades' has a face of 'Five'.
- * <p>
- * Many card games have a notion of face and
- * suit, so these are included in CORC.
  *
- * @param <F> the object implementing this. Used to reference the subclass for the Comparable interface.
+ * @param <F> the implementing class. Used to reference the subclass for the {@link CardProperty} interface.
  */
 public interface IFace<F extends IFace> extends CardProperty<F> {
 
     /**
-     * SHOULD be unique to this face.
+     * SHOULD be unique to this.
      * <p>
      * For example: In a standard 52 card deck,
      * a 'Five of Spades' would most likely return
@@ -43,13 +40,13 @@ public interface IFace<F extends IFace> extends CardProperty<F> {
      * 'Five' is the face value. While the 'Six
      * of Spades' SHOULD return a different string.
      *
-     * @return The String representation of this face.
+     * @return the String representation of this.
      */
     @Override
     String getName();
 
     /**
-     * SHOULD be unique to this face.
+     * SHOULD be unique to this.
      * <p>
      * For example: In a standard 52 card deck,
      * a 'Five of Spades' would most likely return
@@ -57,7 +54,7 @@ public interface IFace<F extends IFace> extends CardProperty<F> {
      * 'Five' is the face value. While the 'Six
      * of Spades' SHOULD return a different value.
      *
-     * @return The integer value of this face.
+     * @return the integer value of this.
      */
     @Override
     int getValue();

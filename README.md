@@ -2,29 +2,37 @@
 
 ## Version: 4.0.0
 
-### This program is released under license CORC (GPL version 3)
+### This program is released under license CORC \(GPL version 3\)
 
 ### Authors:
 
-- Cordell Stocker
+- Cordell Stocker 
+  - GitHub: https://github.com/cordell-stocker
   - Author of CORC
 - Lucas Burdell
-  - Author of Blackburn CardFramework (BBCF), the predecessor of CORC.
+  - GitHub: https://github.com/lucas-burdell
+  - Author of Blackburn CardFramework (BBCF), the predecessor of CORC. Much of the ground
+  work from BBCF that carried over into CORC was created by Lucas.
 
 ### Special thanks to:
 
-- Dr. Joshua Gross
 - Dr. Kevin Coogan
+  - GitHub: https://github.com/kpcoogan
+- Dr. Joshua Gross
+  - GitHub: https://github.com/jbgross
 - Rylee Wilson
+  - GitHub: https://github.com/Rylee-Wilson
 - Delaney Satchwell
+  - GitHub: https://github.com/lanesatchwell
 - Michael Hoff
+  - GitHub: https://github.com/MikeTheAnomaly
 
 ## Purpose
 
-This framework is designed to enable the creation of Model View Controller (\MVC\) projects for beginner programmers.
+This framework is designed to enable the creation of Model View Controller \(MVC\) projects for beginner programmers.
 These projects should allow the consumer to be able to write simple programs \(from their perspective\)
 that run a card game. The overall goal is to give the new programmer the experience of working with an
-external API to create a complex program, without having to write any of the complicated unnecessary logic
+external API to create a complex program, without having to write any of the complicated necessary logic
 required to run the resulting game.
 
 An simple example would be an implementation of "High Card". Where there are only two players, each player
@@ -40,16 +48,31 @@ NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
 "OPTIONAL" in this document are to be interpreted as described in
 RFC 2119. https://www.ietf.org/rfc/rfc2119.txt
 
+## Unit Tests
+
+CORC uses JUnit4 for the testing library. 
+
+## Documentation
+
+- The word "this" is to be reserved as a keyword even in documentation and comments to refer to
+the instance of the class.
+
 ## Notes
 
 ### Naming Convention
 
-- For student readability, interfaces MAY start with "I".
+- For student comprehension, interfaces MAY start with "I".
   - This is generally considered bad practice \(A consumer of objects should usually
-  by given the interface level object, and should have no idea that they are interacting
+  be given the interface level object, and should have no idea that they are interacting
   with an interface\). However, early CS students may be confused by
   inheritance/polymorphism. So they should not be aware of the distinctions between a
-  "Card" interface and a "StandardCard" object. But rather interact with a "Card" object
-  \(That is really the "StandardCard" object\), that interfaces "ICard" \(That is
+  "Card" interface and a "StandardCard" class. But rather interact with a "Card" class
+  \(That is really the "StandardCard" class\), that interfaces "ICard" \(That is
   really the "Card" interface\).
+  - Backend classes which students will not see SHOULD follow standard Java naming
+  conventions.
 
+### Versions Going Forward
+
+As of December 20, 2019, Semantic versioning \(SemVer\) will be used,
+which can be read at https://semver.org/.

@@ -21,12 +21,16 @@
 package corc.structure;
 
 /**
- * An Object with a name MAY implement this class.
- * This allows other consumer Objects the ability to associate
- * a String name with the implementing Object.
+ * This allows consumer Objects the ability to associate
+ * a String name with this (the implementing Object).
  */
 public interface Nameable {
 
+    /**
+     * Gets the name of this.
+     *
+     * @return the name of this.
+     */
     String getName();
 
 }

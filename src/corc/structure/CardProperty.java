@@ -54,16 +54,15 @@ package corc.structure;
  * category would also most likely contain a sub-category. So Simples would contain
  * an attribute (that is a subclass of CardProperty) of Dots, Bamboo, or Characters.
  *
- * @param <P> the object implementing this. Used to reference the subclass for the Comparable interface.
+ * @param <P> the object implementing this. Used to reference the subclass for the {@link Comparable} interface.
  */
 public interface CardProperty<P extends CardProperty> extends Comparable<P> {
 
     /**
      * This method is used to get the
-     * common name for this CardProperty.
+     * common name for this.
      * <p>
-     * SHOULD be a unique common name of this
-     * CardProperty.
+     * SHOULD be a unique common name of this.
      * <p>
      * For example: If the property is the face
      * of the card in a standard 52 card deck,
@@ -77,16 +76,14 @@ public interface CardProperty<P extends CardProperty> extends Comparable<P> {
      * SHOULD return something different as its
      * common name.
      *
-     * @return The common name of this property.
+     * @return the common name of this.
      */
     String getName();
 
     /**
-     * This method gets the value of this
-     * CardProperty.
+     * This method gets the value of this.
      * <p>
-     * SHOULD be unique to the common name of this
-     * CardProperty.
+     * SHOULD be unique to the common name of this.
      * <p>
      * For example: If the property is the face
      * of the card in a standard 52 card deck,
@@ -104,7 +101,7 @@ public interface CardProperty<P extends CardProperty> extends Comparable<P> {
      * distinguish between unique types of a
      * common name for this CardProperty.
      *
-     * @return The integer value of this property.
+     * @return the integer value of this.
      */
     int getValue();
 }
