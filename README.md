@@ -51,6 +51,7 @@ RFC 2119. https://www.ietf.org/rfc/rfc2119.txt
 ## Development
 
 - Intellij Idea is the preferred IDE platform for working on this project.
+- 
 
 ## Unit Tests
 
