@@ -29,7 +29,7 @@ import corc.structure.Nameable;
  * A subclass will need to store a local reference of the Cardset,
  * given to the constructor, in order to modify the Cardset.
  */
-public abstract class AbstractPlayer implements Nameable, ListenableCardset<Card> {
+public abstract class Player implements Nameable, ListenableCardset<Card> {
 
     private final String NAME;
     private final Cardset CARDSET;
@@ -40,7 +40,7 @@ public abstract class AbstractPlayer implements Nameable, ListenableCardset<Card
      * @param name    the name for this player.
      * @param cardset the Cardset this player uses.
      */
-    public AbstractPlayer(String name, Cardset cardset) {
+    public Player(String name, Cardset cardset) {
         this.NAME = name;
         this.CARDSET = cardset;
     }

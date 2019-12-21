@@ -1,7 +1,5 @@
 # Card Objects Rendered Correctly \(CORC\)
 
-## Version: 1.0.1
-
 ### This program is released under license CORC \(GPL version 3\)
 
 ### Authors:
