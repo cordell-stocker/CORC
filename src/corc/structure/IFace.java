@@ -58,4 +58,5 @@ public interface IFace<F extends IFace> extends CardProperty<F> {
      */
     @Override
     int getValue();
+
 }

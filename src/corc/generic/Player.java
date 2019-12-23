@@ -25,18 +25,18 @@ import corc.structure.ICard;
 import corc.structure.ListenableCardset;
 import corc.structure.Nameable;
 
-public class GenericPlayer<C extends ICard> implements Nameable, ListenableCardset<C> {
+public class Player<C extends ICard> implements Nameable, ListenableCardset<C> {
 
     private final String NAME;
-    private final GenericCardset<C> CARDSET;
+    private final Cardset<C> CARDSET;
 
     /**
-     * Creates a player object that has a name and a {@link GenericCardset}.
+     * Creates a player object that has a name and a {@link Cardset}.
      *
      * @param name    the name for this player.
      * @param cardset the Cardset this player uses.
      */
-    public GenericPlayer(String name, GenericCardset<C> cardset) {
+    public Player(String name, Cardset<C> cardset) {
         this.NAME = name;
         this.CARDSET = cardset;
     }
@@ -50,7 +50,7 @@ public class GenericPlayer<C extends ICard> implements Nameable, ListenableCards
     }
 
     /**
-     * Adds an {@link CardsetListener} to this player's stored {@link GenericCardset}.
+     * Adds an {@link CardsetListener} to this player's stored {@link Cardset}.
      *
      * @param listener the CardsetListener to be called whenever there
      *                 is a change to the stored Cardset.
@@ -60,7 +60,7 @@ public class GenericPlayer<C extends ICard> implements Nameable, ListenableCards
     }
 
     /**
-     * Removes an {@link CardsetListener} from this player's stored {@link GenericCardset}.
+     * Removes an {@link CardsetListener} from this player's stored {@link Cardset}.
      *
      * @param listener the CardsetListener to remove from the stored Cardset.
      */

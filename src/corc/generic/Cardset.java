@@ -24,12 +24,12 @@ import corc.structure.*;
 
 import java.util.*;
 
-public class GenericCardset<C extends ICard> implements ICardset<C>, ListenableCardset<C> {
+public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<C> {
 
     private final List<CardsetListener<C>> LISTENERS = new ArrayList<>();
     private final List<C> CARDS;
 
-    public GenericCardset(List<C> cards) {
+    public Cardset(List<C> cards) {
         this.CARDS = cards;
     }
 

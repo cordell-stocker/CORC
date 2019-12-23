@@ -104,4 +104,5 @@ public interface CardProperty<P extends CardProperty> extends Comparable<P> {
      * @return the integer value of this.
      */
     int getValue();
+
 }
