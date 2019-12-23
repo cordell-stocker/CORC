@@ -111,14 +111,6 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
     C getCard(int index);
 
     /**
-     * Should return the cards stored in this, but not the direct
-     * reference to any internal variables.
-     *
-     * @return array of the stored cards.
-     */
-    C[] getCards();
-
-    /**
      * @param index   index of the element to replace
      * @param element element to be stored at the specified position
      * @return the element previously at the specified position

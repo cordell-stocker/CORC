@@ -22,6 +22,7 @@ package corc.generic;
 
 import corc.structure.*;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<C> {
@@ -40,7 +41,9 @@ public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<
      */
     @Override
     public boolean addCard(C card) {
-        this.fireCardsAdded((C[])new Object[]{card});
+        List<C> cards = new ArrayList<>();
+        cards.add(card);
+        this.fireCardsAdded(cards);
         return this.CARDS.add(card);
     }
 
@@ -51,7 +54,9 @@ public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<
      */
     @Override
     public void addCard(int index, C card) {
-        this.fireCardsAdded((C[])new Object[]{card});
+        List<C> cards = new ArrayList<>();
+        cards.add(card);
+        this.fireCardsAdded(cards);
         this.CARDS.add(index, card);
     }
 
@@ -97,7 +102,9 @@ public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<
      */
     @Override
     public boolean removeCard(C card) {
-        this.fireCardsRemoved((C[])new Object[]{card});
+        List<C> cards = new ArrayList<>();
+        cards.add(card);
+        this.fireCardsRemoved(cards);
         return this.CARDS.remove(card);
     }
 
@@ -109,7 +116,9 @@ public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<
     @Override
     public C removeCard(int index) {
         C card = this.CARDS.remove(index);
-        this.fireCardsRemoved((C[])new Object[]{card});
+        List<C> cards = new ArrayList<>();
+        cards.add(card);
+        this.fireCardsRemoved(cards);
         return card;
     }
 
@@ -146,22 +155,6 @@ public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<
     }
 
     /**
-     * Should return the cards stored in this, but not the direct
-     * reference to any internal variables.
-     *
-     * @return array of the stored cards.
-     */
-    @Override
-    public C[] getCards() {
-        int size = this.CARDS.size();
-        C[] cards = (C[])new Object[size];
-        for (int i = 0; i < size; i++) {
-            cards[i] = this.CARDS.get(i);
-        }
-        return cards;
-    }
-
-    /**
      * @param index index of the element to replace
      * @param card  element to be stored at the specified position
      * @return the element previously at the specified position
@@ -170,8 +163,12 @@ public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<
     @Override
     public C setCard(int index, C card) {
         C oldCard = this.CARDS.set(index, card);
-        this.fireCardsRemoved((C[])new Object[]{oldCard});
-        this.fireCardsAdded((C[])new Object[]{card});
+        List<C> newCards = new ArrayList<>();
+        newCards.add(card);
+        List<C> oldCards = new ArrayList<>();
+        oldCards.add(oldCard);
+        this.fireCardsRemoved(oldCards);
+        this.fireCardsAdded(newCards);
         return oldCard;
     }
 
@@ -224,6 +221,7 @@ public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<
      */
     @Override
     public void sort() {
+        //noinspection unchecked
         Collections.sort(this.CARDS);
     }
 

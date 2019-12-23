@@ -24,6 +24,7 @@ import corc.structure.ICardset;
 import corc.structure.CardsetListener;
 import corc.structure.ListenableCardset;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
@@ -145,22 +146,6 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
     @Override
     public Card getCard(int index) {
         return this.CARDS.get(index);
-    }
-
-    /**
-     * Should return the cards stored in this, but not the direct
-     * reference to any internal variables.
-     *
-     * @return array of the stored cards.
-     */
-    @Override
-    public Card[] getCards() {
-        int size = this.CARDS.size();
-        Card[] cards = new Card[size];
-        for (int i = 0; i < size; i++) {
-            cards[i] = this.CARDS.get(i);
-        }
-        return cards;
     }
 
     /**

@@ -20,12 +20,11 @@
 
 package corc.generic;
 
-import corc.structure.CardsetListener;
-import corc.structure.ICard;
-import corc.structure.ListenableCardset;
-import corc.structure.Nameable;
+import corc.structure.*;
 
-public class Player<C extends ICard> implements Nameable, ListenableCardset<C> {
+import java.util.List;
+
+public class Player<C extends ICard> implements IPlayer<C> {
 
     private final String NAME;
     private final Cardset<C> CARDSET;
@@ -36,9 +35,9 @@ public class Player<C extends ICard> implements Nameable, ListenableCardset<C> {
      * @param name    the name for this player.
      * @param cardset the Cardset this player uses.
      */
-    public Player(String name, Cardset<C> cardset) {
+    public Player(String name, List<C> cardset) {
         this.NAME = name;
-        this.CARDSET = cardset;
+        this.CARDSET = new Cardset<C>(cardset);
     }
 
     /**

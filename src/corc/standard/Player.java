@@ -20,8 +20,7 @@ This file is part of CORC.
 package corc.standard;
 
 import corc.structure.CardsetListener;
-import corc.structure.ListenableCardset;
-import corc.structure.Nameable;
+import corc.structure.IPlayer;
 
 /**
  * A general player that has a name and a {@link Cardset}.
@@ -29,7 +28,7 @@ import corc.structure.Nameable;
  * A subclass will need to store a local reference of the Cardset,
  * given to the constructor, in order to modify the Cardset.
  */
-public abstract class Player implements Nameable, ListenableCardset<Card> {
+public abstract class Player implements IPlayer<Card> {
 
     private final String NAME;
     private final Cardset CARDSET;
