@@ -50,4 +50,5 @@ public enum Suit implements ISuit<Suit> {
     public int getValue() {
         return this.ordinal();
     }
+
 }

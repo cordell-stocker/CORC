@@ -28,7 +28,7 @@ public class Card implements ICard<Card> {
     private final Suit SUIT;
 
     /**
-     * Shallow copy constructor.
+     * Copy constructor.
      * <p>
      * Since StandardFace and StandardSuit are enums,
      * setting this's Face and Suit to the other's
@@ -40,6 +40,12 @@ public class Card implements ICard<Card> {
         this(other.FACE, other.SUIT);
     }
 
+    /**
+     * Creates a new Card object.
+     *
+     * @param face the {@link Face} of this Card.
+     * @param suit the {@link Suit} of this Card.
+     */
     public Card(Face face, Suit suit) {
         this.FACE = face;
         this.SUIT = suit;

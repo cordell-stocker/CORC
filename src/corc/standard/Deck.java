@@ -21,14 +21,21 @@ package corc.standard;
 
 import corc.core.Logger;
 import corc.exception.EmptyDeckException;
-import corc.structure.IDeck;
 
 import java.util.List;
 
-public class Deck extends Cardset implements IDeck<Card> {
+/**
+ * A Deck that uses standard {@link Card}s.
+ */
+public class Deck extends corc.generic.Deck<Card> {
 
-    public Deck(List<Card> cards) {
-        super(cards);
+    /**
+     * Creates a deck that uses standard {@link Card}s.
+     *
+     * @param list the {@link List} to be used to store Cards in.
+     */
+    public Deck(List<Card> list) {
+        super(list);
         this.reset();
     }
 
