@@ -20,11 +20,29 @@
 
 package corc.generic;
 
-import corc.structure.*;
+import corc.structure.CardsetListener;
+import corc.structure.ICard;
+import corc.structure.IPlayer;
 
-import java.util.List;
-
-public class Player<C extends ICard> implements IPlayer<C> {
+/**
+ * A general player object that contains a {@link Cardset}.
+ * This serves as a base class for game implementations.
+ * <p>
+ * Subclasses SHOULD retain a local reference of the Cardset passed to the
+ * constructor, as there is no getter method for the Cardset from this.
+ * <p>
+ * Subclasses SHOULD NOT provide a way of getting a reference to the internal
+ * Cardset. By following this rule, direct access to the Cardset is
+ * restricted to only this and the subclass.
+ * <p>
+ * If methods of the Cardset would need to be called (such as
+ * {@link Cardset#addCard(ICard)}), those methods SHOULD be replicated
+ * in the subclass, and control how the Cardset is affected. To see a
+ * clear example, look at {@link Player#addCardsetListener(CardsetListener)}.
+ *
+ * @param <C> the subclass of {@link ICard} that this player will hold in its {@link Cardset}.
+ */
+public abstract class Player<C extends ICard> implements IPlayer<C> {
 
     private final String NAME;
     private final Cardset<C> CARDSET;
@@ -35,9 +53,9 @@ public class Player<C extends ICard> implements IPlayer<C> {
      * @param name    the name for this player.
      * @param cardset the Cardset this player uses.
      */
-    public Player(String name, List<C> cardset) {
+    public Player(String name, Cardset<C> cardset) {
         this.NAME = name;
-        this.CARDSET = new Cardset<C>(cardset);
+        this.CARDSET = cardset;
     }
 
     /**

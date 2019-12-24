@@ -18,31 +18,31 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.structure;
+package corc.generic;
 
-import corc.standard.Cardset;
+import corc.structure.ICard;
+import corc.structure.IDeck;
+
+import java.util.List;
 
 /**
- * Similar to the JavaFX Observable hierarchy, this denotes that the implementing
- * Object CAN have {@link CardsetListener}s that SHOULD be notified whenever there
- * is a change in the {@link Cardset} being monitored.
+ * A base deck object for a card game.
+ * <p>
+ * Subclasses will need to implement the methods required
+ * by the {@link IDeck} interface. Since this generic version
+ * is unable to construct the generic type {@link ICard}s.
  *
- * @param <C> the expected subclass of {@link ICard} to interact with.
+ * @param <C> the subclass of {@link ICard} to be used.
  */
-public interface ListenableCardset<C extends ICard> {
+public abstract class Deck<C extends ICard> extends Cardset<C> implements IDeck<C> {
 
     /**
-     * SHOULD add the {@link CardsetListener} to a {@link Cardset}.
+     * Creates a Deck
      *
-     * @param listener adds the listener to a Cardset.
+     * @param list the {@link List} to be used to store the cards in.
      */
-    void addCardsetListener(CardsetListener<C> listener);
-
-    /**
-     * SHOULD remove the {@link CardsetListener} from a {@link Cardset}.
-     *
-     * @param listener removes the listener from a Cardset.
-     */
-    void removeCardsetListener(CardsetListener<C> listener);
+    public Deck(List<C> list) {
+        super(list);
+    }
 
 }

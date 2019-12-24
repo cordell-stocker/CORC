@@ -25,13 +25,25 @@ import corc.structure.*;
 import java.lang.reflect.Array;
 import java.util.*;
 
+/**
+ * A generic implementation of {@link ICardset} and {@link ListenableCardset}.
+ *
+ * @param <C> the subclass of {@link ICard} that this will hold.
+ * @see ICardset
+ * @see ListenableCardset
+ */
 public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<C> {
 
     private final List<CardsetListener<C>> LISTENERS = new ArrayList<>();
     private final List<C> CARDS;
 
-    public Cardset(List<C> cards) {
-        this.CARDS = cards;
+    /**
+     * Creates a new Cardset.
+     *
+     * @param list the {@link List} to be used to store the cards in.
+     */
+    public Cardset(List<C> list) {
+        this.CARDS = list;
     }
 
     /**
@@ -298,7 +310,7 @@ public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<
 
     /**
      * A conversion method to allow this to behave as if this were a {@link Collection}.
-     *
+     * <p>
      * Returns a copy of the internal {@link List}. Modifications to the returned List
      * will not effect the internal List.
      *

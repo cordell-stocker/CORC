@@ -20,5 +20,22 @@
 
 package corc.structure;
 
+/**
+ * A general player object that SHOULD contain a {@link ICardset}.
+ * This serves as a base interface for implementations.
+ * <p>
+ * Subclasses SHOULD retain a local reference of the Cardset passed to the
+ * constructor, as there is no getter method for the Cardset from this.
+ * <p>
+ * Subclasses SHOULD NOT provide a way of getting a reference to the internal
+ * Cardset. By following this rule, direct access to the Cardset is
+ * restricted to only this and the subclass.
+ * <p>
+ * If methods of the Cardset would need to be called (such as
+ * {@link ICardset#addCard(ICard)}), those methods SHOULD be replicated
+ * (wrapped) in the subclass, and control how the Cardset is affected.
+ *
+ * @param <C> the subclass of {@link ICard} that this player will hold in its {@link ICardset}.
+ */
 public interface IPlayer<C extends ICard> extends Nameable, ListenableCardset<C> {
 }

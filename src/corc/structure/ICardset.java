@@ -32,9 +32,9 @@ import java.util.ListIterator;
  * enforce the API of "addCard(ICard)" instead of a Collection's version of "add(ICard)".
  * <p>
  * To account for potential needs of treating this class as a Collection, a
- * {@link ICardset#toCollection()} has been included to the subclass to implement.
+ * {@link ICardset#toCollection()} has been included for the subclass to implement.
  *
- * @param <C> The subclass of {@link ICard} to be stored
+ * @param <C> the subclass of {@link ICard} to be stored
  */
 public interface ICardset<C extends ICard> extends Iterable<C> {
 

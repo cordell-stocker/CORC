@@ -19,55 +19,21 @@ This file is part of CORC.
 */
 package corc.standard;
 
-import corc.structure.CardsetListener;
-import corc.structure.IPlayer;
-
 /**
- * A general player that has a name and a {@link Cardset}.
- * <p>
- * A subclass will need to store a local reference of the Cardset,
- * given to the constructor, in order to modify the Cardset.
+ * A general player that uses the standard {@link Cardset}.
+ *
+ * @see corc.generic.Player
  */
-public abstract class Player implements IPlayer<Card> {
-
-    private final String NAME;
-    private final Cardset CARDSET;
+public abstract class Player extends corc.generic.Player<Card> {
 
     /**
-     * Creates a player object that has a name and a {@link Cardset}.
+     * Creates a player that uses a standard {@link Cardset}.
      *
      * @param name    the name for this player.
      * @param cardset the Cardset this player uses.
+     * @see corc.generic.Player
      */
     public Player(String name, Cardset cardset) {
-        this.NAME = name;
-        this.CARDSET = cardset;
-    }
-
-    /**
-     * @return the name of this player.
-     */
-    @Override
-    public String getName() {
-        return this.NAME;
-    }
-
-    /**
-     * Adds an {@link CardsetListener} to this player's stored {@link Cardset}.
-     *
-     * @param listener the CardsetListener to be called whenever there
-     *                 is a change to the stored Cardset.
-     */
-    public void addCardsetListener(CardsetListener<Card> listener) {
-        this.CARDSET.addCardsetListener(listener);
-    }
-
-    /**
-     * Removes an {@link CardsetListener} from this player's stored {@link Cardset}.
-     *
-     * @param listener the CardsetListener to remove from the stored Cardset.
-     */
-    public void removeCardsetListener(CardsetListener<Card> listener) {
-        this.CARDSET.removeCardsetListener(listener);
+        super(name, cardset);
     }
 }
