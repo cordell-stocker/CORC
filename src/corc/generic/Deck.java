@@ -22,7 +22,6 @@ package corc.generic;
 
 import corc.structure.ICard;
 import corc.structure.IDeck;
-
 import java.util.List;
 
 /**

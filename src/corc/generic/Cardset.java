@@ -21,8 +21,6 @@
 package corc.generic;
 
 import corc.structure.*;
-
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
