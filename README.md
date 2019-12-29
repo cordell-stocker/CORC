@@ -49,16 +49,15 @@ RFC 2119. https://www.ietf.org/rfc/rfc2119.txt
 ## Development
 
 - Intellij Idea is the preferred IDE platform for working on this project.
-- 
+- Try to follow the Google Java Style Guide: https://google.github.io/styleguide/javaguide.html
+exceptions include:
+  - Block indentation is +4 spaces (not +2).
+  - Continuation indent is +8 spaces (not +4).
+  - The above may change in the future if decided to be necessary.
 
 ## Unit Tests
 
 CORC uses JUnit4 for the testing library. 
-
-## Documentation
-
-- The word "this" is to be reserved as a keyword even in documentation and comments to refer to
-the instance of the class.
 
 ## Notes
 
@@ -74,8 +73,3 @@ the instance of the class.
   really the "Card" interface\).
   - Backend classes which students will not see SHOULD follow standard Java naming
   conventions.
-
-### Versions Going Forward
-
-As of December 20, 2019, Semantic versioning \(SemVer\) will be used,
-which can be read at https://semver.org/.

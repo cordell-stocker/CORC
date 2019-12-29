@@ -1,48 +1,59 @@
 /*
-Copyright 2019, Cordell Stocker (cordellstocker@gmail.com)
-All rights reserved.
+ * Copyright 2019, Cordell Stocker (cordellstocker@gmail.com)
+ * All rights reserved.
+ *
+ * This file is part of CORC.
+ *
+ *     CORC is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     CORC is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
+ */
 
-This file is part of CORC.
+package corc.base;
 
-    CORC is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    CORC is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with CORC.  If not, see <https://www.gnu.org/licenses/>.
-*/
-package corc.standard;
-
-import corc.structure.Binder;
-import corc.structure.ICardset;
-import corc.structure.CardsetListener;
-import corc.structure.ListenableCardset;
-
+import corc.structure.*;
 import java.util.*;
 
-public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
+/**
+ * A generic implementation of {@link ICardset} and {@link ListenableCardset}.
+ *
+ * @param <C> the subclass of {@link ICard} that this will hold.
+ * @see ICardset
+ * @see ListenableCardset
+ */
+public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<C> {
 
-    private final List<CardsetListener<Card>> LISTENERS = new ArrayList<>();
-    private final List<Card> CARDS;
+    private final List<CardsetListener<C>> LISTENERS = new ArrayList<>();
+    private final List<C> CARDS;
 
-    public Cardset(List<Card> cards) {
-        this.CARDS = cards;
+    /**
+     * Creates a new Cardset.
+     *
+     * @param list the {@link List} to be used to store the cards in.
+     */
+    public Cardset(List<C> list) {
+        this.CARDS = list;
     }
 
     /**
-     * @param card Card to be added.
+     * @param card C to be added.
      * @return true (as specified by {@link Collection#add(Object)}.
      * @see List#add(Object)
      */
     @Override
-    public boolean addCard(Card card) {
-        this.fireCardsAdded(new Card[]{card});
+    public boolean addCard(C card) {
+        List<C> cards = new ArrayList<>();
+        cards.add(card);
+        this.fireCardsAdded(cards);
         return this.CARDS.add(card);
     }
 
@@ -52,8 +63,10 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      * @see List#add(int, Object)
      */
     @Override
-    public void addCard(int index, Card card) {
-        this.fireCardsAdded(new Card[]{card});
+    public void addCard(int index, C card) {
+        List<C> cards = new ArrayList<>();
+        cards.add(card);
+        this.fireCardsAdded(cards);
         this.CARDS.add(index, card);
     }
 
@@ -63,18 +76,18 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      * @see List#addAll(Collection)
      */
     @Override
-    public boolean addCards(Card[] cards) {
+    public boolean addCards(C[] cards) {
         this.fireCardsAdded(cards);
         return this.CARDS.addAll(Arrays.asList(cards));
     }
 
     /**
-     * @param cards Card to be added.
+     * @param cards C to be added.
      * @return true if this list changed as a result of the call.
      * @see List#addAll(Collection)
      */
     @Override
-    public boolean addCards(List<Card> cards) {
+    public boolean addCards(List<C> cards) {
         this.fireCardsAdded(cards);
         return this.CARDS.addAll(cards);
     }
@@ -87,41 +100,45 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      * @see List#addAll(int, Collection)
      */
     @Override
-    public boolean addCards(int index, List<? extends Card> cards) {
+    public boolean addCards(int index, List<? extends C> cards) {
         this.fireCardsAdded(cards);
         return this.CARDS.addAll(index, cards);
     }
 
     /**
-     * @param card Card to be removed
-     * @return true if this Cardset contained the specified Card.
+     * @param card C to be removed
+     * @return true if this Cardset contained the specified C.
      * @see List#remove(Object)
      */
     @Override
-    public boolean removeCard(Card card) {
-        this.fireCardsRemoved(new Card[]{card});
+    public boolean removeCard(C card) {
+        List<C> cards = new ArrayList<>();
+        cards.add(card);
+        this.fireCardsRemoved(cards);
         return this.CARDS.remove(card);
     }
 
     /**
-     * @param index the index of the Card to be removed
-     * @return the Card previously contained at the specified position.
+     * @param index the index of the C to be removed
+     * @return the C previously contained at the specified position.
      * @see List#remove(int)
      */
     @Override
-    public Card removeCard(int index) {
-        Card card = this.CARDS.remove(index);
-        this.fireCardsRemoved(new Card[]{card});
+    public C removeCard(int index) {
+        C card = this.CARDS.remove(index);
+        List<C> cards = new ArrayList<>();
+        cards.add(card);
+        this.fireCardsRemoved(cards);
         return card;
     }
 
     /**
-     * @param cards Card to be removed from this.
+     * @param cards C to be removed from this.
      * @return true if this Cardset changed as a result of the call.
      * @see List#removeAll(Collection)
      */
     @Override
-    public boolean removeCards(Card[] cards) {
+    public boolean removeCards(C[] cards) {
         this.fireCardsRemoved(cards);
         return this.CARDS.removeAll(Arrays.asList(cards));
     }
@@ -132,7 +149,7 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      * @see List#removeAll(Collection)
      */
     @Override
-    public boolean removeCards(List<Card> cards) {
+    public boolean removeCards(List<C> cards) {
         this.fireCardsRemoved(cards);
         return this.CARDS.removeAll(cards);
     }
@@ -143,24 +160,8 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      * @see List#get(int)
      */
     @Override
-    public Card getCard(int index) {
+    public C getCard(int index) {
         return this.CARDS.get(index);
-    }
-
-    /**
-     * Should return the cards stored in this, but not the direct
-     * reference to any internal variables.
-     *
-     * @return array of the stored cards.
-     */
-    @Override
-    public Card[] getCards() {
-        int size = this.CARDS.size();
-        Card[] cards = new Card[size];
-        for (int i = 0; i < size; i++) {
-            cards[i] = this.CARDS.get(i);
-        }
-        return cards;
     }
 
     /**
@@ -170,10 +171,14 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      * @see List#set(int, Object)
      */
     @Override
-    public Card setCard(int index, Card card) {
-        Card oldCard = this.CARDS.set(index, card);
-        this.fireCardsRemoved(new Card[]{oldCard});
-        this.fireCardsAdded(new Card[]{card});
+    public C setCard(int index, C card) {
+        C oldCard = this.CARDS.set(index, card);
+        List<C> newCards = new ArrayList<>();
+        newCards.add(card);
+        List<C> oldCards = new ArrayList<>();
+        oldCards.add(oldCard);
+        this.fireCardsRemoved(oldCards);
+        this.fireCardsAdded(newCards);
         return oldCard;
     }
 
@@ -184,8 +189,8 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      */
     @Override
     public boolean retainCards(List<?> cards) {
-        List<Card> removedCards = new ArrayList<>();
-        for (Card card : this) {
+        List<C> removedCards = new ArrayList<>();
+        for (C card : this) {
             if (!cards.contains(card)) {
                 removedCards.add(card);
             }
@@ -226,6 +231,7 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      */
     @Override
     public void sort() {
+        //noinspection unchecked
         Collections.sort(this.CARDS);
     }
 
@@ -235,7 +241,7 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      * @param cards array to be bound.
      */
     @Override
-    public void bind(Card[] cards) {
+    public void bind(C[] cards) {
         Binder.bind(cards, this);
     }
 
@@ -273,7 +279,7 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      * @see Iterable#iterator()
      */
     @Override
-    public Iterator<Card> iterator() {
+    public Iterator<C> iterator() {
         return this.CARDS.iterator();
     }
 
@@ -302,14 +308,14 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
 
     /**
      * A conversion method to allow this to behave as if this were a {@link Collection}.
-     *
+     * <p>
      * Returns a copy of the internal {@link List}. Modifications to the returned List
      * will not effect the internal List.
      *
-     * @return this iterable list of {@link Card}s as a Collection
+     * @return this iterable list of {@link C}s as a Collection
      */
     @Override
-    public Collection<Card> toCollection() {
+    public Collection<C> toCollection() {
         return new ArrayList<>(this.CARDS);
     }
 
@@ -363,7 +369,7 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      * @see List#listIterator()
      */
     @Override
-    public ListIterator<Card> listIterator() {
+    public ListIterator<C> listIterator() {
         return this.CARDS.listIterator();
     }
 
@@ -375,7 +381,7 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      * @see List#listIterator(int)
      */
     @Override
-    public ListIterator<Card> listIterator(int index) {
+    public ListIterator<C> listIterator(int index) {
         return this.CARDS.listIterator(index);
     }
 
@@ -386,23 +392,23 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
      * @see List#subList(int, int)
      */
     @Override
-    public List<Card> subList(int fromIndex, int toIndex) {
+    public List<C> subList(int fromIndex, int toIndex) {
         return this.CARDS.subList(fromIndex, toIndex);
     }
 
     @Override
-    public void addCardsetListener(CardsetListener<Card> listener) {
+    public void addCardsetListener(CardsetListener<C> listener) {
         this.LISTENERS.add(listener);
     }
 
     @Override
-    public void removeCardsetListener(CardsetListener<Card> listener) {
+    public void removeCardsetListener(CardsetListener<C> listener) {
         this.LISTENERS.remove(listener);
     }
 
-    private void fireCardsAdded(Card[] cards) {
-        List<Card> nonNullCards = new ArrayList<>();
-        for (Card card : cards) {
+    private void fireCardsAdded(C[] cards) {
+        List<C> nonNullCards = new ArrayList<>();
+        for (C card : cards) {
             if (card != null) {
                 nonNullCards.add(card);
             }
@@ -410,15 +416,15 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
         this.fireCardsAdded(nonNullCards);
     }
 
-    private void fireCardsAdded(List<? extends Card> cards) {
-        for (CardsetListener<Card> listener : this.LISTENERS) {
+    private void fireCardsAdded(List<? extends C> cards) {
+        for (CardsetListener<C> listener : this.LISTENERS) {
             listener.cardsAdded(cards);
         }
     }
 
-    private void fireCardsRemoved(Card[] cards) {
-        List<Card> nonNullCards = new ArrayList<>();
-        for (Card card : cards) {
+    private void fireCardsRemoved(C[] cards) {
+        List<C> nonNullCards = new ArrayList<>();
+        for (C card : cards) {
             if (card != null) {
                 nonNullCards.add(card);
             }
@@ -426,8 +432,8 @@ public class Cardset implements ICardset<Card>, ListenableCardset<Card> {
         this.fireCardsRemoved(nonNullCards);
     }
 
-    private void fireCardsRemoved(List<? extends Card> cards) {
-        for (CardsetListener<Card> listener : this.LISTENERS) {
+    private void fireCardsRemoved(List<? extends C> cards) {
+        for (CardsetListener<C> listener : this.LISTENERS) {
             listener.cardsRemoved(cards);
         }
     }

@@ -1,22 +1,23 @@
 /*
-Copyright 2019, Cordell Stocker (cordellstocker@gmail.com)
-All rights reserved.
+ * Copyright 2019, Cordell Stocker (cordellstocker@gmail.com)
+ * All rights reserved.
+ *
+ * This file is part of CORC.
+ *
+ *     CORC is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     CORC is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
+ */
 
-This file is part of CORC.
-
-    CORC is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    CORC is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with CORC.  If not, see <https://www.gnu.org/licenses/>.
-*/
 package corc.structure;
 
 import java.util.Collection;
@@ -27,14 +28,16 @@ import java.util.ListIterator;
 /**
  * An iterable list of Card objects.
  * <p>
- * Subclasses CAN use a subclass of a {@link Collection} underneath, and is even recommended.
- * However, a subclass of this SHOULD NOT directly inherit from a Collection. This is to
- * enforce the API of "addCard(ICard)" instead of a Collection's version of "add(ICard)".
+ * Subclasses CAN use a subclass of a {@link Collection} underneath,
+ * and is even recommended. However, a subclass of this SHOULD NOT
+ * directly inherit from a Collection. This is to enforce the API of
+ * "addCard(ICard)" instead of a Collection's version of "add(ICard)".
  * <p>
- * To account for potential needs of treating this class as a Collection, a
- * {@link ICardset#toCollection()} has been included to the subclass to implement.
+ * To account for potential needs of treating this class as a
+ * Collection, a {@link ICardset#toCollection()} has been included for
+ * the subclass to implement.
  *
- * @param <C> The subclass of {@link ICard} to be stored
+ * @param <C> the subclass of {@link ICard} to be stored
  */
 public interface ICardset<C extends ICard> extends Iterable<C> {
 
@@ -109,14 +112,6 @@ public interface ICardset<C extends ICard> extends Iterable<C> {
      * @see List#get(int)
      */
     C getCard(int index);
-
-    /**
-     * Should return the cards stored in this, but not the direct
-     * reference to any internal variables.
-     *
-     * @return array of the stored cards.
-     */
-    C[] getCards();
 
     /**
      * @param index   index of the element to replace

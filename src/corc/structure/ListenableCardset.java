@@ -20,12 +20,13 @@
 
 package corc.structure;
 
-import corc.standard.Cardset;
+import corc.base.standard.Cardset;
 
 /**
- * Similar to the JavaFX Observable hierarchy, this denotes that the implementing
- * Object CAN have {@link CardsetListener}s that will be notified whenever there
- * is a change in the {@link Cardset} being monitored.
+ * Similar to the JavaFX Observable hierarchy, this denotes that the
+ * implementing Object CAN have {@link CardsetListener}s that SHOULD
+ * be notified whenever there is a change in the {@link Cardset}
+ * being monitored.
  *
  * @param <C> the expected subclass of {@link ICard} to interact with.
  */
