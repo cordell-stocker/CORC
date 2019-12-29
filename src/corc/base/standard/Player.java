@@ -18,30 +18,23 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.generic;
-
-import corc.structure.ICard;
-import corc.structure.IDeck;
-import java.util.List;
+package corc.base.standard;
 
 /**
- * A base deck object for a card game.
- * <p>
- * Subclasses will need to implement the methods required
- * by the {@link IDeck} interface. Since this generic version
- * is unable to construct the generic type {@link ICard}s.
+ * A general player that uses the standard {@link Cardset}.
  *
- * @param <C> the subclass of {@link ICard} to be used.
+ * @see corc.base.Player
  */
-public abstract class Deck<C extends ICard> extends Cardset<C> implements IDeck<C> {
+public abstract class Player extends corc.base.Player<Card> {
 
     /**
-     * Creates a Deck
+     * Creates a player that uses a standard {@link Cardset}.
      *
-     * @param list the {@link List} to be used to store the cards in.
+     * @param name    the name for this player.
+     * @param cardset the Cardset this player uses.
+     * @see corc.base.Player
      */
-    public Deck(List<C> list) {
-        super(list);
+    public Player(String name, Cardset cardset) {
+        super(name, cardset);
     }
-
 }

@@ -18,7 +18,7 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.standard;
+package corc.base.standard;
 
 import corc.core.Logger;
 import corc.exception.EmptyDeckException;
@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * A Deck that uses standard {@link Card}s.
  */
-public class Deck extends corc.generic.Deck<Card> {
+public class Deck extends corc.base.Deck<Card> {
 
     /**
      * Creates a deck that uses standard {@link Card}s.

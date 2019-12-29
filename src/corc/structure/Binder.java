@@ -21,7 +21,6 @@
 package corc.structure;
 
 import corc.core.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +39,6 @@ public abstract class Binder extends Thread {
      * elements in the array will appear in the list.
      * @see Binder#bind(ICard[], ICardset, long)
      * Will have a refreshRate of 100ms.
-     * @see Binder#bind(ICard[], ICardset, long)
      */
     public static <C extends ICard, T extends ICardset<C>> Thread bind(C[] source, T dest) {
         return Binder.bind(source, dest, 100);

@@ -28,7 +28,8 @@ package corc.structure;
  * For example: In a standard 52 card deck,
  * the 'Five of Spades' has a face of 'Five'.
  *
- * @param <F> the implementing class. Used to reference the subclass for the {@link CardProperty} interface.
+ * @param <F> the implementing class. Used to reference the subclass
+ *            for the {@link CardProperty} interface.
  */
 public interface IFace<F extends IFace> extends CardProperty<F> {
 

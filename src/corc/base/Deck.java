@@ -18,38 +18,30 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.standard;
+package corc.base;
 
-import corc.structure.ISuit;
+import corc.structure.ICard;
+import corc.structure.IDeck;
+import java.util.List;
 
 /**
- * Internal ordering is: HEARTS, SPADES, DIAMONDS, CLUBS.
+ * A base deck object for a card game.
+ * <p>
+ * Subclasses will need to implement the methods required
+ * by the {@link IDeck} interface. Since this generic version
+ * is unable to construct the generic type {@link ICard}s.
+ *
+ * @param <C> the subclass of {@link ICard} to be used.
  */
-public enum Suit implements ISuit<Suit> {
-    HEARTS, SPADES, DIAMONDS, CLUBS;
+public abstract class Deck<C extends ICard> extends Cardset<C> implements IDeck<C> {
 
     /**
-     * Returns the String name in all uppercase.
-     * <p>
-     * Examples: "HEARTS" and "SPADES"
+     * Creates a Deck
      *
-     * @return the String representation of this.
+     * @param list the {@link List} to be used to store the cards in.
      */
-    @Override
-    public String getName() {
-        return this.toString();
-    }
-
-    /**
-     * Returns a value between 0 and 3
-     * <p>
-     * Examples: A "HEARTS" returns 0, "SPADES" returns 2, etc.
-     *
-     * @return the integer value of this.
-     */
-    @Override
-    public int getValue() {
-        return this.ordinal();
+    public Deck(List<C> list) {
+        super(list);
     }
 
 }

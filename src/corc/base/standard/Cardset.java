@@ -18,30 +18,13 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.structure;
+package corc.base.standard;
 
-/**
- * Holds an instance of an {@link IDeck} object.
- * <p>
- * This is a container to allow the passing around of an
- * IDeck that may be changed to a different instance of
- * an IDeck over time.
- */
-public class DeckContainer {
+import java.util.List;
 
-    private IDeck deck;
+public class Cardset extends corc.base.Cardset<Card> {
 
-    /**
-     * @param deck the {@link IDeck} to be stored.
-     */
-    public void setDeck(IDeck deck) {
-        this.deck = deck;
-    }
-
-    /**
-     * @return the stored {@link IDeck}.
-     */
-    public IDeck getDeck() {
-        return this.deck;
+    public Cardset(List<Card> list) {
+        super(list);
     }
 }

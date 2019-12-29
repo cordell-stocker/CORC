@@ -25,7 +25,8 @@ package corc.structure;
  * <p>
  * SHOULD be implemented as an immutable object.
  *
- * @param <C> the implementing object. Used to reference the subclass for the {@link Comparable} interface.
+ * @param <C> the implementing object. Used to reference the subclass
+ *            for the {@link Comparable} interface.
  */
 public interface ICard<C extends ICard> extends Comparable<C> {
 
@@ -37,7 +38,7 @@ public interface ICard<C extends ICard> extends Comparable<C> {
      * method returns [face, suit] for one card, this method
      * should use the same order for all cards of the same
      * type.
-     *
+     * <p>
      * Following the same rules as above, if an implementing
      * class is subclassed, the subclass should return an
      * array following the same order as the superclass before

@@ -18,7 +18,7 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.generic;
+package corc.base;
 
 import corc.structure.CardsetListener;
 import corc.structure.ICard;

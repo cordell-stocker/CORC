@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"corc.core"},{"l":"corc.exception"},{"l":"corc.javafxextend"},{"l":"corc.javafxextend.standard"},{"l":"corc.javafxextend.structure"},{"l":"corc.standard"},{"l":"corc.structure"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"corc.base"},{"l":"corc.base.standard"},{"l":"corc.core"},{"l":"corc.exception"},{"l":"corc.structure"}]

@@ -28,12 +28,14 @@ import java.util.ListIterator;
 /**
  * An iterable list of Card objects.
  * <p>
- * Subclasses CAN use a subclass of a {@link Collection} underneath, and is even recommended.
- * However, a subclass of this SHOULD NOT directly inherit from a Collection. This is to
- * enforce the API of "addCard(ICard)" instead of a Collection's version of "add(ICard)".
+ * Subclasses CAN use a subclass of a {@link Collection} underneath,
+ * and is even recommended. However, a subclass of this SHOULD NOT
+ * directly inherit from a Collection. This is to enforce the API of
+ * "addCard(ICard)" instead of a Collection's version of "add(ICard)".
  * <p>
- * To account for potential needs of treating this class as a Collection, a
- * {@link ICardset#toCollection()} has been included for the subclass to implement.
+ * To account for potential needs of treating this class as a
+ * Collection, a {@link ICardset#toCollection()} has been included for
+ * the subclass to implement.
  *
  * @param <C> the subclass of {@link ICard} to be stored
  */

@@ -1,7 +1,5 @@
+corc.base
+corc.base.standard
 corc.core
 corc.exception
-corc.javafxextend
-corc.javafxextend.standard
-corc.javafxextend.structure
-corc.standard
 corc.structure

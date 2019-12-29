@@ -18,7 +18,7 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.standard;
+package corc.base.standard;
 
 import corc.structure.CardProperty;
 import corc.structure.ICard;

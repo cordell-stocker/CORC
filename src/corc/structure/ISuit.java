@@ -28,7 +28,8 @@ package corc.structure;
  * For example: In a standard 52 card deck,
  * the 'Five of Spades' has a suit of 'Spades'.
  *
- * @param <S> the implementing class. Used to reference the subclass for the {@link CardProperty} interface.
+ * @param <S> the implementing class. Used to reference the subclass
+ *            for the {@link CardProperty} interface.
  */
 public interface ISuit<S extends ISuit> extends CardProperty<S> {
 

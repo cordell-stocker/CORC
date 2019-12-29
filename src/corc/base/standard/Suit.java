@@ -18,20 +18,20 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.standard;
+package corc.base.standard;
 
-import corc.structure.IFace;
+import corc.structure.ISuit;
 
 /**
- * Internal ordering is: ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING.
+ * Internal ordering is: HEARTS, SPADES, DIAMONDS, CLUBS.
  */
-public enum Face implements IFace<Face> {
-    ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
+public enum Suit implements ISuit<Suit> {
+    HEARTS, SPADES, DIAMONDS, CLUBS;
 
     /**
      * Returns the String name in all uppercase.
      * <p>
-     * Examples: "ACE", "THREE", "JACK"
+     * Examples: "HEARTS" and "SPADES"
      *
      * @return the String representation of this.
      */
@@ -41,14 +41,15 @@ public enum Face implements IFace<Face> {
     }
 
     /**
-     * Returns a value between 1 and 13
+     * Returns a value between 0 and 3
      * <p>
-     * Examples: An "ACE" returns 1, "SEVEN" returns 7, etc.
+     * Examples: A "HEARTS" returns 0, "SPADES" returns 2, etc.
      *
      * @return the integer value of this.
      */
     @Override
     public int getValue() {
-        return this.ordinal() + 1;
+        return this.ordinal();
     }
+
 }
