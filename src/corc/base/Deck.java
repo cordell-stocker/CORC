@@ -18,16 +18,30 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.exception;
+package corc.base;
+
+import corc.structure.ICard;
+import corc.structure.IDeck;
+import java.util.List;
 
 /**
- * This {@link RuntimeException} is to be thrown whenever
- * a consumer of an {@link corc.structure.ICard} receives
- * a subtype that is not permitted.
+ * A base deck object for a card game.
+ * <p>
+ * Subclasses will need to implement the methods required
+ * by the {@link IDeck} interface. Since this generic version
+ * is unable to construct the generic type {@link ICard}s.
+ *
+ * @param <C> the subclass of {@link ICard} to be used.
  */
-public class InvalidCardTypeException extends RuntimeException {
+public abstract class Deck<C extends ICard> extends Cardset<C> implements IDeck<C> {
 
-	public InvalidCardTypeException() {
-		super("Card was not of expected type.");
-	}
+    /**
+     * Creates a Deck
+     *
+     * @param list the {@link List} to be used to store the cards in.
+     */
+    public Deck(List<C> list) {
+        super(list);
+    }
+
 }

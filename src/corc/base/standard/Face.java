@@ -18,31 +18,37 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.generic;
+package corc.base.standard;
 
-import corc.structure.ICard;
-import corc.structure.IDeck;
-
-import java.util.List;
+import corc.structure.IFace;
 
 /**
- * A base deck object for a card game.
- * <p>
- * Subclasses will need to implement the methods required
- * by the {@link IDeck} interface. Since this generic version
- * is unable to construct the generic type {@link ICard}s.
- *
- * @param <C> the subclass of {@link ICard} to be used.
+ * Internal ordering is: ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING.
  */
-public abstract class Deck<C extends ICard> extends Cardset<C> implements IDeck<C> {
+public enum Face implements IFace<Face> {
+    ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
 
     /**
-     * Creates a Deck
+     * Returns the String name in all uppercase.
+     * <p>
+     * Examples: "ACE", "THREE", "JACK"
      *
-     * @param list the {@link List} to be used to store the cards in.
+     * @return the String representation of this.
      */
-    public Deck(List<C> list) {
-        super(list);
+    @Override
+    public String getName() {
+        return this.toString();
     }
 
+    /**
+     * Returns a value between 1 and 13
+     * <p>
+     * Examples: An "ACE" returns 1, "SEVEN" returns 7, etc.
+     *
+     * @return the integer value of this.
+     */
+    @Override
+    public int getValue() {
+        return this.ordinal() + 1;
+    }
 }

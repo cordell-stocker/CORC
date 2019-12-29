@@ -18,11 +18,9 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.generic;
+package corc.base;
 
 import corc.structure.*;
-
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**

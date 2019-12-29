@@ -18,16 +18,38 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.exception;
+package corc.base.standard;
+
+import corc.structure.ISuit;
 
 /**
- * This {@link RuntimeException} is to be thrown whenever
- * a consumer of an {@link corc.structure.ICard} receives
- * a subtype that is not permitted.
+ * Internal ordering is: HEARTS, SPADES, DIAMONDS, CLUBS.
  */
-public class InvalidCardTypeException extends RuntimeException {
+public enum Suit implements ISuit<Suit> {
+    HEARTS, SPADES, DIAMONDS, CLUBS;
 
-	public InvalidCardTypeException() {
-		super("Card was not of expected type.");
-	}
+    /**
+     * Returns the String name in all uppercase.
+     * <p>
+     * Examples: "HEARTS" and "SPADES"
+     *
+     * @return the String representation of this.
+     */
+    @Override
+    public String getName() {
+        return this.toString();
+    }
+
+    /**
+     * Returns a value between 0 and 3
+     * <p>
+     * Examples: A "HEARTS" returns 0, "SPADES" returns 2, etc.
+     *
+     * @return the integer value of this.
+     */
+    @Override
+    public int getValue() {
+        return this.ordinal();
+    }
+
 }

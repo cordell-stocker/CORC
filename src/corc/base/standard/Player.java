@@ -18,16 +18,23 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.exception;
+package corc.base.standard;
 
 /**
- * This {@link RuntimeException} is to be thrown whenever
- * a consumer of an {@link corc.structure.ICard} receives
- * a subtype that is not permitted.
+ * A general player that uses the standard {@link Cardset}.
+ *
+ * @see corc.base.Player
  */
-public class InvalidCardTypeException extends RuntimeException {
+public abstract class Player extends corc.base.Player<Card> {
 
-	public InvalidCardTypeException() {
-		super("Card was not of expected type.");
-	}
+    /**
+     * Creates a player that uses a standard {@link Cardset}.
+     *
+     * @param name    the name for this player.
+     * @param cardset the Cardset this player uses.
+     * @see corc.base.Player
+     */
+    public Player(String name, Cardset cardset) {
+        super(name, cardset);
+    }
 }

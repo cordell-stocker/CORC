@@ -19,6 +19,9 @@ This file is part of CORC.
 */
 package corc.standard;
 
+import corc.base.standard.Card;
+import corc.base.standard.Face;
+import corc.base.standard.Suit;
 import org.junit.Test;
 
 import java.util.ArrayList;

@@ -18,16 +18,13 @@
  *     along with CORC.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package corc.exception;
+package corc.base.standard;
 
-/**
- * This {@link RuntimeException} is to be thrown whenever
- * a consumer of an {@link corc.structure.ICard} receives
- * a subtype that is not permitted.
- */
-public class InvalidCardTypeException extends RuntimeException {
+import java.util.List;
 
-	public InvalidCardTypeException() {
-		super("Card was not of expected type.");
-	}
+public class Cardset extends corc.base.Cardset<Card> {
+
+    public Cardset(List<Card> list) {
+        super(list);
+    }
 }
