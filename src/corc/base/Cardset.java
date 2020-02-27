@@ -433,8 +433,14 @@ public class Cardset<C extends ICard> implements ICardset<C>, ListenableCardset<
     }
 
     private void fireCardsRemoved(List<? extends C> cards) {
+        List<C> notNull = new ArrayList<>();
+        for (C card : cards) {
+            if (card != null) {
+                notNull.add(card);
+            }
+        }
         for (CardsetListener<C> listener : this.LISTENERS) {
-            listener.cardsRemoved(cards);
+            listener.cardsRemoved(notNull);
         }
     }
 
